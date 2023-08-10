@@ -1,0 +1,5 @@
+bricks:
+  model:
+    path: ./mason/model
+  repository:
+    path: ./mason/repository
