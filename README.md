@@ -20,7 +20,7 @@ Add the package to pubspec:
   nx_ui:
     git:
       url: https://github.com/sequrify-io/nx_ui.git
-      ref: v0.0.1
+      ref: v0.0.2
 ```
 
 ## Usage and description of widgets
