@@ -32,6 +32,8 @@ class nxPrimaryButton extends HookConsumerWidget {
     this.image,
     this.textColor,
     this.textStyle,
+    this.imageEnabled = true,
+    this.imageColor,
     super.key,
   });
   final VoidCallback onPressed;
@@ -66,65 +68,68 @@ class nxPrimaryButton extends HookConsumerWidget {
   final Image? image;
   final Color? textColor;
   final TextStyle? textStyle;
+  final bool? imageEnabled;
+  final Color? imageColor;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return MaterialButton(
-      onPressed: onPressed,
-      onLongPress: onLongPress,
-      onHighlightChanged: onHighlightChanged,
-      textTheme: textTheme,
-      disabledTextColor: disabledTextColor,
-      disabledColor: disabledColor,
-      focusColor: focusColor,
-      hoverColor: hoverColor,
-      highlightColor: highlightColor,
-      splashColor: splashColor,
-      colorBrightness: colorBrightness,
-      elevation: elevation,
-      focusElevation: focusElevation,
-      hoverElevation: hoverElevation,
-      highlightElevation: highlightElevation,
-      disabledElevation: disabledElevation,
-      visualDensity: visualDensity,
-      clipBehavior: clipBehavior,
-      focusNode: focusNode,
-      autofocus: autofocus,
-      materialTapTargetSize: materialTapTargetSize,
-      animationDuration: animationDuration,
-      minWidth: minWidth,
-      height: height,
-      enableFeedback: enableFeedback,
-      shape: shape ?? RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
-      padding: padding ?? const EdgeInsets.all(0),
-      child: Ink(
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Theme.of(context).colorScheme.primary,
+    return ButtonTheme(
+      minWidth: double.infinity,
+      child: MaterialButton(
+        onPressed: onPressed,
+        onLongPress: onLongPress,
+        onHighlightChanged: onHighlightChanged,
+        textTheme: textTheme,
+        disabledTextColor: disabledTextColor,
+        disabledColor: disabledColor,
+        focusColor: focusColor,
+        hoverColor: hoverColor,
+        highlightColor: highlightColor,
+        splashColor: splashColor,
+        colorBrightness: colorBrightness,
+        elevation: elevation,
+        focusElevation: focusElevation,
+        hoverElevation: hoverElevation,
+        highlightElevation: highlightElevation,
+        disabledElevation: disabledElevation,
+        visualDensity: visualDensity,
+        clipBehavior: clipBehavior,
+        focusNode: focusNode,
+        autofocus: autofocus,
+        materialTapTargetSize: materialTapTargetSize,
+        animationDuration: animationDuration,
+        minWidth: minWidth,
+        height: height,
+        enableFeedback: enableFeedback,
+        shape: shape ?? RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+        padding: padding ?? const EdgeInsets.all(10),
+        child: Ink(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            color: Colors.transparent,
+            borderRadius: const BorderRadius.all(Radius.circular(30)),
           ),
-          color: Colors.transparent,
-          borderRadius: const BorderRadius.all(Radius.circular(30)),
-        ),
-        child: Container(
-          width: 120,
-          height: 50,
-          alignment: Alignment.center,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                labelText,
-                style: textStyle ?? Theme.of(context).textTheme.labelSmall?.copyWith(color: textColor ?? Theme.of(context).colorScheme.onSurfaceVariant, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              image ??
-                  const Image(
-                    image: AssetImage('assets/icon-arrow-right-button-white.png', package: 'nx_ui'),
-                  )
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(labelText, style: textStyle ?? Theme.of(context).textTheme.labelSmall?.copyWith(color: textColor ?? Theme.of(context).colorScheme.onSurfaceVariant, fontWeight: FontWeight.bold), textAlign: TextAlign.center),
+                const SizedBox(
+                  width: 10,
+                ),
+                if (imageEnabled == true)
+                  image ??
+                      Image(
+                        color: imageColor,
+                        image: const AssetImage('assets/icon-arrow-right-button-white.png', package: 'nx_ui'),
+                      )
+                else
+                  const SizedBox.shrink(),
+              ],
+            ),
           ),
         ),
       ),

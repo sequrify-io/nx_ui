@@ -12,22 +12,23 @@ class MainScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 100,
-            ),
-            nxTile(
-              color: Colors.black,
-              text: Text(
-                'Hello',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ],
-        ),
+    return Scaffold(
+      body: Column(
+        children: [
+          const SizedBox(
+            height: 100,
+          ),
+          nxPrimaryButton(
+            onPressed: () {},
+            labelText: 'Clicked',
+            imageColor: Colors.black,
+          ),
+          nxSecondaryButton(
+            onPressed: () {},
+            labelText: 'Clicked',
+            imageEnabled: false,
+          ),
+        ],
       ),
     );
   }

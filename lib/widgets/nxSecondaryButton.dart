@@ -33,6 +33,8 @@ class nxSecondaryButton extends HookConsumerWidget {
     this.linearGradient,
     this.textColor,
     this.textStyle,
+    this.imageEnabled = true,
+    this.imageColor,
     super.key,
   });
   final VoidCallback onPressed;
@@ -68,67 +70,74 @@ class nxSecondaryButton extends HookConsumerWidget {
   final Color? textColor;
   final TextStyle? textStyle;
   final LinearGradient? linearGradient;
+  final bool? imageEnabled;
+  final Color? imageColor;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return MaterialButton(
-      onPressed: onPressed,
-      onLongPress: onLongPress,
-      onHighlightChanged: onHighlightChanged,
-      textTheme: textTheme,
-      disabledTextColor: disabledTextColor,
-      disabledColor: disabledColor,
-      focusColor: focusColor,
-      hoverColor: hoverColor,
-      highlightColor: highlightColor,
-      splashColor: splashColor,
-      colorBrightness: colorBrightness,
-      elevation: elevation,
-      focusElevation: focusElevation,
-      hoverElevation: hoverElevation,
-      highlightElevation: highlightElevation,
-      disabledElevation: disabledElevation,
-      visualDensity: visualDensity,
-      clipBehavior: clipBehavior,
-      focusNode: focusNode,
-      autofocus: autofocus,
-      materialTapTargetSize: materialTapTargetSize,
-      animationDuration: animationDuration,
-      minWidth: minWidth,
-      height: height,
-      enableFeedback: enableFeedback,
-      shape: shape ?? RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
-      padding: padding ?? const EdgeInsets.all(0),
-      child: Ink(
-        decoration: BoxDecoration(
-          gradient: linearGradient ??
-              const LinearGradient(
-                begin: Alignment(0.5, 0),
-                end: Alignment(0.5, 1),
-                colors: [Color(0xff633edb), Color(0xff6e32b5)],
-              ),
-          borderRadius: BorderRadius.all(Radius.circular(30)),
-        ),
-        child: Container(
-          width: 120,
-          height: 50,
-          alignment: Alignment.center,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                labelText,
-                style: textStyle ?? Theme.of(context).textTheme.labelSmall?.copyWith(color: textColor ?? Theme.of(context).colorScheme.onSurfaceVariant, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              image ??
-                  const Image(
-                    image: AssetImage('assets/icon-arrow-right-button-white.png', package: 'nx_ui'),
-                  )
-            ],
+    return ButtonTheme(
+      minWidth: double.infinity,
+      child: MaterialButton(
+        onPressed: onPressed,
+        onLongPress: onLongPress,
+        onHighlightChanged: onHighlightChanged,
+        textTheme: textTheme,
+        disabledTextColor: disabledTextColor,
+        disabledColor: disabledColor,
+        focusColor: focusColor,
+        hoverColor: hoverColor,
+        highlightColor: highlightColor,
+        splashColor: splashColor,
+        colorBrightness: colorBrightness,
+        elevation: elevation,
+        focusElevation: focusElevation,
+        hoverElevation: hoverElevation,
+        highlightElevation: highlightElevation,
+        disabledElevation: disabledElevation,
+        visualDensity: visualDensity,
+        clipBehavior: clipBehavior,
+        focusNode: focusNode,
+        autofocus: autofocus,
+        materialTapTargetSize: materialTapTargetSize,
+        animationDuration: animationDuration,
+        minWidth: minWidth,
+        height: height,
+        enableFeedback: enableFeedback,
+        shape: shape ?? RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+        padding: padding ?? const EdgeInsets.all(0),
+        child: Ink(
+          decoration: BoxDecoration(
+            gradient: linearGradient ??
+                const LinearGradient(
+                  begin: Alignment(0.5, 0),
+                  end: Alignment(0.5, 1),
+                  colors: [Color(0xff633edb), Color(0xff6e32b5)],
+                ),
+            borderRadius: BorderRadius.all(Radius.circular(30)),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  labelText,
+                  style: textStyle ?? Theme.of(context).textTheme.labelSmall?.copyWith(color: textColor ?? Theme.of(context).colorScheme.onSurfaceVariant, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                if (imageEnabled == true)
+                  image ??
+                      Image(
+                        color: imageColor,
+                        image: const AssetImage('assets/icon-arrow-right-button-white.png', package: 'nx_ui'),
+                      )
+                else
+                  const SizedBox.shrink()
+              ],
+            ),
           ),
         ),
       ),
