@@ -117,14 +117,18 @@ class nxPrimaryButton extends HookConsumerWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(labelText, style: textStyle ?? Theme.of(context).textTheme.labelSmall?.copyWith(color: textColor ?? Theme.of(context).colorScheme.onSurfaceVariant, fontWeight: FontWeight.bold), textAlign: TextAlign.center),
-                const SizedBox(
-                  width: 10,
-                ),
                 if (imageEnabled == true)
                   image ??
-                      Image(
-                        color: imageColor,
-                        image: const AssetImage('assets/icon-arrow-right-button-white.png', package: 'nx_ui'),
+                      Row(
+                        children: [
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Image(
+                            color: imageColor,
+                            image: const AssetImage('assets/icon-arrow-right-button-white.png', package: 'nx_ui'),
+                          ),
+                        ],
                       )
                 else
                   const SizedBox.shrink(),

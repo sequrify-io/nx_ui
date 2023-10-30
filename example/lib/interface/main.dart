@@ -27,6 +27,7 @@ class MainScreen extends ConsumerWidget {
             onPressed: () {},
             labelText: 'Clicked',
             imageEnabled: false,
+            textStyle: const TextStyle(color: Colors.white),
           ),
         ],
       ),

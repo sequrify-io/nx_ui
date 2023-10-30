@@ -20,7 +20,7 @@ Add the package to pubspec:
   nx_ui:
     git:
       url: https://github.com/sequrify-io/nx_ui.git
-      ref: v0.0.3
+      ref: v0.0.4
 ```
 
 ## Usage and description of widgets
@@ -148,6 +148,8 @@ The other parameters you can provide are:
 -  Image? image - image that can replaced white arrow icon
 -  Color? textColor
 -  TextStyle? textStyle
+- bool? imageEnabled - by default set to true. Set to false if you don't want to display image on button;
+- Color? imageColor;
 
 
 The button is based on MaterialButton, so those are all parameters that MaterialButton takes.
@@ -214,6 +216,9 @@ The other parameters you can provide are:
 - LinearGradient? linearGradient - custom gradient instead of a default one.
 -  Color? textColor
 -  TextStyle? textStyle
+- bool? imageEnabled - by default set to true. Set to false if you don't want to display image on button;
+- Color? imageColor;
+
 ### nxShimmerBox
 This widget provides a shimmer animation and it can be displayed during loading.
 
