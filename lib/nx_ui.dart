@@ -7,3 +7,4 @@ export 'widgets/nxShimmerBox.dart';
 export 'widgets/nxSnackbar.dart';
 export 'widgets/nxComingSoon.dart';
 export 'widgets/nxExpandableText.dart';
+export 'widgets/nxCustomDrawer.dart';

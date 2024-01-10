@@ -2,35 +2,85 @@ import 'package:flutter/material.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:example/generated/l10n.dart';
-import 'package:example/theme/custom_colors.dart';
-import 'package:example/utils/theme_utils.dart';
-import 'package:nx_ui/nx_ui.dart';
+import 'package:ionicons/ionicons.dart';
+
+import 'package:nx_main_screen/nx_main_screen.dart';
+import 'package:go_router/go_router.dart';
+import 'package:nx_ui/widgets/nxCustomDrawer.dart';
 
 class MainScreen extends ConsumerWidget {
-  const MainScreen({super.key});
+  const MainScreen({required this.currentTab, super.key});
+  final int currentTab;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 100,
-          ),
-          nxPrimaryButton(
-            onPressed: () {},
-            labelText: 'Clicked',
-            imageColor: Colors.black,
-          ),
-          nxSecondaryButton(
-            onPressed: () {},
-            labelText: 'Clicked',
-            imageEnabled: false,
-            textStyle: const TextStyle(color: Colors.white),
-          ),
-        ],
+    final pages = <Widget>[
+      Container(),
+      Container(),
+      Container(),
+    ];
+
+    final items = [
+      const BottomNavigationBarItem(
+        icon: Icon(Ionicons.home_outline),
+        activeIcon: Icon(Ionicons.home),
+        label: 'Home',
       ),
+      const BottomNavigationBarItem(
+        icon: Icon(Ionicons.people_outline),
+        activeIcon: Icon(Ionicons.people),
+        label: 'Feedback',
+      ),
+      const BottomNavigationBarItem(
+        icon: Icon(Ionicons.calendar),
+        activeIcon: Icon(Ionicons.calendar),
+        label: 'Calendar',
+      ),
+    ];
+
+    return nxMainScreen(
+      appContext: context,
+      drawer: NxCustomDrawer(
+        drawerOptions: {
+          'Home': () => {
+                context.goNamed(
+                  'home',
+                  pathParameters: {
+                    'tab': '0',
+                  },
+                ),
+              },
+          'Feedback': () => {
+                context.goNamed(
+                  'home',
+                  pathParameters: {
+                    'tab': '1',
+                  },
+                ),
+              },
+          'Calendar': () => {
+                context.goNamed(
+                  'home',
+                  pathParameters: {
+                    'tab': '2',
+                  },
+                ),
+              },
+        },
+      ),
+      currentTab: currentTab,
+      onTabChange: (int index) {
+        context.goNamed(
+          'home',
+          pathParameters: {
+            'tab': '$index',
+          },
+        );
+      },
+      pages: pages,
+      items: items,
+      bottomNavSelectedItemColor: Theme.of(context).colorScheme.onPrimary,
+      // bottomNavUnselectedItemColor: Theme.of(context).colorScheme.onBackground,
     );
   }
 }

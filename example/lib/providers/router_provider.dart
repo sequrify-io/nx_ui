@@ -10,6 +10,7 @@ class Routes {
   static const auth = '/auth';
   static const userSetup = '/user_setup';
   static const settings = '/settings';
+  static const home = '/home';
 
   static build(String route, List<String> params) => [route, ...params].join('/');
 }
@@ -22,9 +23,16 @@ final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     navigatorKey: navigatorKey,
     // debugLogDiagnostics: true,
-    initialLocation: '/',
+    initialLocation: '/home/${0}',
     routes: [
-      buildRoute(Routes.initial, const MainScreen()),
+      GoRoute(
+        name: 'home',
+        path: '${Routes.home}/:tab',
+        builder: (BuildContext context, GoRouterState state) => MainScreen(
+          key: state.pageKey,
+          currentTab: int.tryParse(state.pathParameters['tab'] ?? '') ?? 0,
+        ),
+      ),
     ],
   );
 });
