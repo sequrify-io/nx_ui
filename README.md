@@ -7,6 +7,10 @@ This package provides ui widgets.
 UI widgets provided in package:
 
 - nxCustomDrawer
+- nxBackgroundCard
+- nxBackgroundImage
+- nxEmptyScreen
+- nxSearchTextField
 - nxComingSoon
 - nxExpandableText
 - nxPrimaryButton
@@ -23,7 +27,7 @@ Add the package to pubspec:
 nx_ui:
   git:
     url: https://github.com/sequrify-io/nx_ui.git
-    ref: v0.0.5
+    ref: v0.0.6
 ```
 
 ## Usage and description of widgets
@@ -84,6 +88,156 @@ final TextStyle? optionTextStyle;
 final bool withSignOutOption - default true.
 final Function? signOutFunction - function invoked after clicking sign out.
 final TextStyle? signOutTextStyle;
+
+### nxBackgroundCard
+
+Resizable background card widget, adjustable to the screen. It goes well with Stack widget.
+
+<p>
+<img src="images/home_with_background_image.png" alt="home_with_background_image" width="200"/>
+</p>
+
+Example usage:
+
+```dart
+...
+child: NxBackgroundCard(
+                  context: context,
+                  height: 0.76,
+                  child:  nxEmptyScreen(
+                      context,
+                      const Text('No elements'),
+                      Colors.white,
+
+                  ),
+                ),
+...
+```
+
+NxBackgroundCard takes 4 parameters:
+
+- final Widget child
+- final BuildContext context
+- final double? height
+- final double? width
+
+### nxBackgroundImage
+
+Container widget that works as a background image.
+
+<p>
+<img src="images/home_with_background_image.png" alt="home_with_background_image" width="200"/>
+<img src="images/drawer_with_background_image.png" alt="home_with_background_image" width="200"/>
+</p>
+
+Example usage:
+
+```dart
+@override
+  Widget build(BuildContext context) {
+    return nxBasicScreen(
+      appContext: context,
+      isFullScreen: true,
+      extendBodyBehindAppBar: true,
+      appBarBackgroundColor: Colors.transparent,
+      body: Center(
+        child: Stack(
+            children: [
+              const NxBackgroundImage(
+                imagePath: "assets/images/nextapps_logo.png",
+                imageShift: 295,
+                opacity: 0.5,
+              ),
+              Positioned(
+                bottom: 0,
+                child: NxBackgroundCard(
+                  context: context,
+                  height: 0.76,
+                  child:
+                    child: nxEmptyScreen(
+                      context,
+                      const Text('No elements'),
+                      Colors.white,
+
+                  ),
+                ),
+              ),
+            ],
+
+        ),)
+        ...
+    )}
+```
+
+It takes 3 parameters:
+
+final String imagePath - path to the image
+final double imageShift - distance from the bottom of the stack
+final double opacity - image opacity
+
+### nxEmptyScreen
+
+Empty customizable widget that can be used e.g. when there's no elements returned in list or grid view.
+
+<p>
+<img src="images/home_with_background_image.png" alt="home_with_background_image" width="200"/>
+</p>
+
+Example usage:
+
+```dart
+...
+NxBackgroundCard(
+                  context: context,
+                  height: 0.76,
+                  child: nxEmptyScreen(
+                    context,
+                    const Text('No elements'),
+                    Colors.white,
+                  ),
+                ),
+```
+
+It takes 3 parameters:
+
+- Text information - text displayed inside container
+- Color color - color of the container
+- IconData? icon - icon displayed inside container
+- double? height - height of the container
+- double? width - width of the container
+
+### nxSearchTextField
+
+Search field widget.
+
+<p>
+<img src="images/searchField.png" alt="searchField" width="200"/>
+</p>
+
+Example usage:
+
+```dart
+...
+ Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                      child: NxSearchTextField(
+                        onChanged: (value) {
+                          searchString = value.toLowerCase();
+                        },
+                      ),
+                    ),
+```
+
+It takes parameters:
+
+final Function(String)? onChanged - function invoked after text field changes
+final bool readOnly - indicator if the field is read only or not
+final String? searchText - String displayed inside field
+final Color? cursorColor - cursor color
+final Color? fillColor - text field color
+final TextStyle? labelStyle - text field text style
+final TextStyle? hintStyle - text field hint text style
+final Widget? prefixIcon - custom icon widget
 
 ### nxComingSoon
 
@@ -319,62 +473,47 @@ Parameters you can provide are:
 - double opacity - opacity of shimmer, by default 1
 - Color? color - color of shimmer
 
-### nxSnackbar
+### nxCustomSnackbar
 
-This widget provides a custom snackbar. There are several types of snackbar:
+This widget provides a custom snackbar.
+
+<p>
+<img src="images/success.png" alt="success" height="150" height="50"/>
+<img src="images/error.png" alt="error" width="200" height="100"/>
+<img src="images/warning.png" alt="warning" width="220"/>
+</p>
+
+There are three types of snackbar defined:
 
 - success
 - error
-- info
-- inProgress
+- warning
 
-Each type has defined color and icon, but you can also customize it.
+You can use showSuccessSnackBar, showErrorSnackBar, and showWarningSnackbar.
 
-Example usage:
+Here is example usage:
 
 ```dart
 ...
- @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return const Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 100,
-            ),
-            nxSnackbar(message: 'Success', type: SnackbarType.success, width: 200),
-            nxSnackbar(message: 'Error', type: SnackbarType.error, width: 200, colorError: Colors.redAccent),
-            nxSnackbar(message: 'Info', type: SnackbarType.info, width: 200),
-            nxSnackbar(message: 'In Progress', type: SnackbarType.inProgress, width: 200)
-          ],
-        ),
-      ),
-    );
-  }
+ nxPrimaryButton(
+                      imageColor: Colors.black,
+                      onPressed: () {
+                        NxCustomSnackBar.showErrorSnackBar(context: context, message: 'Error');
+                      },
+                      labelText: 'Invoke snackbar',
+                    ),
 
 ```
 
-<img src="images/nxSnackbar.png" alt="nxSnackbar" width="200"/>
+You can also customize it to your own type using showCustomSnackBar function.
 
-You have to provide to widget three required parameters:
+For parameters you provide:
 
-- required String message - text that appears on snackbar
-- required SnackbarType type - type of snackbar. You can choose from: SnackbarType.success, SnackbarType.error, SnackbarType.info, SnackbarType.inProgress
-- required double width
-
-Parameters you can provide to widget:
-
-- Color? colorSuccess
-- Color? colorError
-- Color? colorInfo
-- Color? colorInProgress
-- Image? assetImageSuccess
-- Image? assetImageFailure
-- Image? assetImageInProgress
-- Image? assetImageInfo
-- TextStyle? textStyle
-- double? height
+required BuildContext context - context
+required String message - snackbar message
+required Color color - snackbar color
+IconData? icon - icon on snackbar
+int seconds - how long snackbar displays
 
 ### nxTile
 

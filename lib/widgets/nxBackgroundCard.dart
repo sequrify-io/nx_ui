@@ -1,0 +1,34 @@
+import 'package:flutter/material.dart';
+
+class NxBackgroundCard extends StatelessWidget {
+  const NxBackgroundCard({
+    required this.child,
+    required this.context,
+    this.height,
+    this.width,
+    super.key,
+  });
+
+  final Widget child;
+  final BuildContext context;
+  final double? height;
+  final double? width;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * (height ?? 1.0),
+      width: MediaQuery.of(context).size.width * (width ?? 1.0),
+      child: Card(
+        margin: EdgeInsets.zero,
+        elevation: 10,
+        semanticContainer: true,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(topRight: Radius.circular(40), topLeft: Radius.circular(40)),
+        ),
+        child: child,
+      ),
+    );
+  }
+}

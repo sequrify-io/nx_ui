@@ -1,3 +1,4 @@
+import 'package:example/interface/home_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -6,6 +7,7 @@ import 'package:ionicons/ionicons.dart';
 
 import 'package:nx_main_screen/nx_main_screen.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nx_ui/widgets/nxBackgroundImage.dart';
 import 'package:nx_ui/widgets/nxCustomDrawer.dart';
 
 class MainScreen extends ConsumerWidget {
@@ -15,7 +17,7 @@ class MainScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final pages = <Widget>[
-      Container(),
+      const HomeScreen(),
       Container(),
       Container(),
     ];
@@ -40,34 +42,48 @@ class MainScreen extends ConsumerWidget {
 
     return nxMainScreen(
       appContext: context,
-      drawer: NxCustomDrawer(
-        drawerOptions: {
-          'Home': () => {
-                context.goNamed(
-                  'home',
-                  pathParameters: {
-                    'tab': '0',
-                  },
-                ),
-              },
-          'Feedback': () => {
-                context.goNamed(
-                  'home',
-                  pathParameters: {
-                    'tab': '1',
-                  },
-                ),
-              },
-          'Calendar': () => {
-                context.goNamed(
-                  'home',
-                  pathParameters: {
-                    'tab': '2',
-                  },
-                ),
-              },
-        },
-      ),
+      drawer: Stack(children: [
+        GestureDetector(
+          onTap: () => context.pop(),
+          child: const Stack(
+            children: [
+              NxBackgroundImage(
+                imagePath: "assets/images/nextapps_logo_background.png",
+                imageShift: 0,
+                opacity: 0.5,
+              ),
+            ],
+          ),
+        ),
+        NxCustomDrawer(
+          drawerOptions: {
+            'Home': () => {
+                  context.goNamed(
+                    'home',
+                    pathParameters: {
+                      'tab': '0',
+                    },
+                  ),
+                },
+            'Feedback': () => {
+                  context.goNamed(
+                    'home',
+                    pathParameters: {
+                      'tab': '1',
+                    },
+                  ),
+                },
+            'Calendar': () => {
+                  context.goNamed(
+                    'home',
+                    pathParameters: {
+                      'tab': '2',
+                    },
+                  ),
+                },
+          },
+        ),
+      ]),
       currentTab: currentTab,
       onTabChange: (int index) {
         context.goNamed(

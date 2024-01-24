@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   flutter_svg: ^2.0.7
   hooks_riverpod: ^2.4.0
+  ionicons: ^0.2.2
   shimmer_animation: ^2.1.0+1
 
 dev_dependencies:
