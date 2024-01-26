@@ -29,7 +29,6 @@ class HomeScreen extends StatelessWidget {
             Positioned(
               bottom: 0,
               child: NxBackgroundCard(
-                context: context,
                 height: 0.76,
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
