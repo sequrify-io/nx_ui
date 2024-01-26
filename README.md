@@ -27,7 +27,7 @@ Add the package to pubspec:
 nx_ui:
   git:
     url: https://github.com/sequrify-io/nx_ui.git
-    ref: v0.0.8
+    ref: v0.0.9
 ```
 
 ## Usage and description of widgets
@@ -113,12 +113,15 @@ child: NxBackgroundCard(
 ...
 ```
 
-NxBackgroundCard takes 4 parameters:
+NxBackgroundCard takes 7 parameters:
 
 - final Widget child
 - final double? height
 - final double? width
 - final Color? backgroundColor
+-  final EdgeInsetsGeometry? margin;
+-  final double? elevation;
+-  final ShapeBorder? shape;
 
 ### nxBackgroundImage
 
