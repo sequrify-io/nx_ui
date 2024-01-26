@@ -27,7 +27,7 @@ Add the package to pubspec:
 nx_ui:
   git:
     url: https://github.com/sequrify-io/nx_ui.git
-    ref: v0.0.6
+    ref: v0.0.7
 ```
 
 ## Usage and description of widgets
@@ -102,7 +102,6 @@ Example usage:
 ```dart
 ...
 child: NxBackgroundCard(
-                  context: context,
                   height: 0.76,
                   child:  nxEmptyScreen(
                       context,
@@ -117,9 +116,9 @@ child: NxBackgroundCard(
 NxBackgroundCard takes 4 parameters:
 
 - final Widget child
-- final BuildContext context
 - final double? height
 - final double? width
+- final Color? backgroundColor
 
 ### nxBackgroundImage
 
