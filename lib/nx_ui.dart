@@ -9,6 +9,6 @@ export 'widgets/nxExpandableText.dart';
 export 'widgets/nxCustomDrawer.dart';
 export 'widgets/nxCustomSnackbar.dart';
 export 'widgets/nxEmptyScreen.dart';
-export 'widgets/nxBackgroundImage.dart';
+export 'widgets/nxBackgroundLayer.dart';
 export 'widgets/nxBackgroundCard.dart';
 export 'widgets/nxSearchTextField.dart';

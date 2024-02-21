@@ -69,6 +69,11 @@ dependencies:
       url: https://github.com/sequrify-io/nx_main_screen.git
       ref: v0.0.3
 
+  nx_sequrify:
+    git:
+      url: https://github.com/sequrify-io/nx_sequrify.git
+      ref: v0.0.9
+
   nx_ui:
      path: "../"
      
@@ -105,6 +110,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/icons/
 
 flutter_icons:
   android: "launcher_icon"

@@ -29,4 +29,5 @@ flutter:
     - assets/icon-big-failed.png
     - assets/icon-info.png
     - assets/button-close@2x.png
+    - assets/logout_icon.svg
 

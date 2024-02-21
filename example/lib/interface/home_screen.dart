@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nx_main_screen/nx_main_screen.dart';
 import 'package:nx_ui/widgets/nxBackgroundCard.dart';
-import 'package:nx_ui/widgets/nxBackgroundImage.dart';
+import 'package:nx_ui/widgets/nxBackgroundLayer.dart';
 import 'package:nx_ui/widgets/nxEmptyScreen.dart';
 import 'package:nx_ui/widgets/nxSearchTextField.dart';
 import 'package:nx_ui/widgets/nxCustomSnackbar.dart';
@@ -12,7 +12,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String searchString;
     return nxBasicScreen(
       appContext: context,
       isFullScreen: true,
@@ -21,10 +20,11 @@ class HomeScreen extends StatelessWidget {
       body: Center(
         child: Stack(
           children: [
-            const NxBackgroundImage(
-              imagePath: "assets/images/nextapps_logo.png",
-              imageShift: 295,
-              opacity: 0.5,
+            NxBackgroundLayer(
+              backgroundColor: Colors.white.withOpacity(0.2),
+              // imagePath: "assets/images/nextapps_logo.png",
+              // imageShift: 295,
+              // imageOpacity: 0.5,
             ),
             Positioned(
               bottom: 0,
@@ -39,9 +39,7 @@ class HomeScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15.0),
                       child: NxSearchTextField(
-                        onChanged: (value) {
-                          searchString = value.toLowerCase();
-                        },
+                        onChanged: (value) {},
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -65,14 +63,27 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      title: 'Home Screen',
-      leftButton: IconButton(
-        onPressed: () => Scaffold.of(context).openDrawer(),
-        icon: Icon(
-          Icons.more_vert,
-          color: Theme.of(context).colorScheme.onBackground,
+      customAppBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.background,
+        elevation: 0,
+        title: const Text(
+          'Home Screen',
+          style: TextStyle(
+            fontSize: 16,
+            fontFamily: 'Roboto',
+            fontWeight: FontWeight.w500,
+            color: Color(0xFF625B71),
+          ),
+        ),
+        leading: IconButton(
+          onPressed: () => Scaffold.of(context).openDrawer(),
+          icon: const Icon(
+            Icons.more_vert,
+            color: Color(0xFF625B71),
+          ),
         ),
       ),
+      title: 'Home Screen',
     );
   }
 }

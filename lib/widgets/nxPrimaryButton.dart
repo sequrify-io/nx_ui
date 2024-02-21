@@ -116,7 +116,11 @@ class nxPrimaryButton extends HookConsumerWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(labelText, style: textStyle ?? Theme.of(context).textTheme.labelSmall?.copyWith(color: textColor ?? Theme.of(context).colorScheme.onSurfaceVariant, fontWeight: FontWeight.bold), textAlign: TextAlign.center),
+                Text(
+                  labelText,
+                  style: textStyle ?? Theme.of(context).textTheme.labelSmall?.copyWith(color: textColor ?? Theme.of(context).colorScheme.onSurfaceVariant, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
                 if (imageEnabled == true)
                   image ??
                       Row(

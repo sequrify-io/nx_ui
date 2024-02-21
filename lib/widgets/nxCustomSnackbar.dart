@@ -55,7 +55,14 @@ class NxCustomSnackBar {
     );
   }
 
-  static ScaffoldFeatureController<SnackBar, SnackBarClosedReason> _showSnackBar({required BuildContext context, required String message, required Color color, IconData? icon, int seconds = 2, SnackBarBehavior snackBarBehavior = SnackBarBehavior.floating}) {
+  static ScaffoldFeatureController<SnackBar, SnackBarClosedReason> _showSnackBar({
+    required BuildContext context,
+    required String message,
+    required Color color,
+    IconData? icon,
+    int seconds = 2,
+    SnackBarBehavior snackBarBehavior = SnackBarBehavior.floating,
+  }) {
     return ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         width: MediaQuery.of(context).size.width * 0.8,
