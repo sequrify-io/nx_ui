@@ -65,6 +65,7 @@ class NxCustomSnackBar {
   }) {
     return ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        elevation: 0,
         width: MediaQuery.of(context).size.width * 0.8,
         backgroundColor: color,
         behavior: snackBarBehavior,
@@ -76,7 +77,6 @@ class NxCustomSnackBar {
             Flexible(
               child: SelectableText(
                 message,
-                // style: TextStyles.paragraphRegular14(Colors.white),
               ),
             )
           ],

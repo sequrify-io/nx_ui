@@ -20,7 +20,7 @@ dependencies:
 
   # freezed
   freezed_annotation: ^2.2.0
-  json_annotation: ^4.8.0
+  json_annotation: ^4.8.1
 
   # platform
   go_router: ^7.1.1
@@ -74,6 +74,11 @@ dependencies:
       url: https://github.com/sequrify-io/nx_sequrify.git
       ref: v0.0.9
 
+  nx_local_notifications:
+    git:
+      url: https://github.com/sequrify-io/nx_local_notifications.git
+      ref: v0.0.4
+
   nx_ui:
      path: "../"
      
@@ -92,7 +97,7 @@ dev_dependencies:
   build_runner: ^2.4.4
   json_serializable: ^6.7.0
   dart_code_metrics: ^5.0.1
-  freezed: ^2.3.2
+  freezed: ^2.3.4
   flutter_launcher_icons: ^0.13.1
   flutter_lints: ^2.0.1
   riverpod_generator: ^2.2.3

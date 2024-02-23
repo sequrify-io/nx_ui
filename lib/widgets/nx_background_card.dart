@@ -9,6 +9,7 @@ class NxBackgroundCard extends StatelessWidget {
     this.margin,
     this.elevation,
     this.shape,
+    this.isScrollable = false,
     super.key,
   });
 
@@ -19,6 +20,8 @@ class NxBackgroundCard extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final double? elevation;
   final ShapeBorder? shape;
+  final bool isScrollable;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -34,7 +37,19 @@ class NxBackgroundCard extends StatelessWidget {
             const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(topRight: Radius.circular(40), topLeft: Radius.circular(40)),
             ),
-        child: child,
+        child: isScrollable
+            ? SingleChildScrollView(
+                child: Wrap(
+                  children: [
+                    child,
+                  ],
+                ),
+              )
+            : Wrap(
+                children: [
+                  child,
+                ],
+              ),
       ),
     );
   }

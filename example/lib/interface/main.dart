@@ -1,16 +1,17 @@
 import 'package:example/interface/home_screen.dart';
+import 'package:example/interface/social_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:ionicons/ionicons.dart';
-
 import 'package:nx_main_screen/nx_main_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nx_sequrify/nx_sequrify.dart';
-import 'package:nx_ui/widgets/nxBackgroundLayer.dart';
-import 'package:nx_ui/widgets/nxCustomDrawer.dart';
+import 'package:nx_ui/widgets/nx_background_layer.dart';
+import 'package:nx_ui/widgets/nx_drawer.dart';
+import 'package:nx_ui/widgets/nx_shimmer_box.dart';
 
 class MainScreen extends ConsumerWidget {
   const MainScreen({required this.currentTab, super.key});
@@ -20,20 +21,20 @@ class MainScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final pages = <Widget>[
       const HomeScreen(),
-      Container(),
-      Container(),
+      const SocialScreen(),
+      const NxShimmerBox(),
     ];
 
     final items = [
       const BottomNavigationBarItem(
-        icon: Icon(Ionicons.person_outline),
-        activeIcon: Icon(Ionicons.person),
-        label: 'Profile',
+        icon: Icon(Ionicons.home_outline),
+        activeIcon: Icon(Ionicons.home),
+        label: 'Home',
       ),
       const BottomNavigationBarItem(
-        icon: Icon(Ionicons.notifications_outline),
-        activeIcon: Icon(Ionicons.notifications),
-        label: 'Notifications',
+        icon: Icon(Ionicons.people_outline),
+        activeIcon: Icon(Ionicons.people),
+        label: 'Social',
       ),
       const BottomNavigationBarItem(
         icon: Icon(Ionicons.settings_outline),
@@ -73,7 +74,7 @@ class MainScreen extends ConsumerWidget {
                     ),
                   },
               [
-                'Notifications',
+                'Notification',
                 SvgPicture.asset('assets/icons/notifications_icon.svg'),
               ]: () => {
                     context.goNamed(

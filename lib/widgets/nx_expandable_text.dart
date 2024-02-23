@@ -1,17 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:ionicons/ionicons.dart';
 
-class nxExpandableText extends StatelessWidget {
-  final String text;
-  final String buttonText;
-  final int maxLines;
-  final Image? icon;
-  final TextStyle? dialogTextStyle;
-  final TextStyle? textStyle;
-  final TextStyle? buttonTextStyle;
-  final Color? backgroundColor;
-
-  const nxExpandableText({
+class NxExpandableText extends StatelessWidget {
+  const NxExpandableText({
     super.key,
     required this.text,
     required this.buttonText,
@@ -22,6 +14,15 @@ class nxExpandableText extends StatelessWidget {
     this.backgroundColor,
     this.maxLines = 1,
   });
+
+  final String text;
+  final String buttonText;
+  final int maxLines;
+  final Image? icon;
+  final TextStyle? dialogTextStyle;
+  final TextStyle? textStyle;
+  final TextStyle? buttonTextStyle;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +47,8 @@ class nxExpandableText extends StatelessWidget {
           maxLines: maxLines,
           overflow: TextOverflow.ellipsis,
           style: textStyle ??
-              Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
+              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Colors.black,
                   ),
         ),
         if (maxLines > 0)
@@ -58,8 +59,8 @@ class nxExpandableText extends StatelessWidget {
             child: Text(
               buttonText,
               style: buttonTextStyle ??
-                  Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
+                  Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Colors.black,
                       ),
             ),
           ),
@@ -69,7 +70,13 @@ class nxExpandableText extends StatelessWidget {
 }
 
 class TextDialog extends ConsumerWidget {
-  const TextDialog({super.key, required this.text, this.icon, this.dialogTextStyle, this.backgroundColor});
+  const TextDialog({
+    super.key,
+    required this.text,
+    this.icon,
+    this.dialogTextStyle,
+    this.backgroundColor,
+  });
 
   final String text;
   final Image? icon;
@@ -90,10 +97,7 @@ class TextDialog extends ConsumerWidget {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: icon ??
-                  const Image(
-                    image: AssetImage('assets/button-close@2x.png', package: 'nx_ui'),
-                  ),
+              icon: icon ?? const Icon(Ionicons.close_outline),
             ),
           ),
           Padding(
@@ -111,7 +115,7 @@ class TextDialog extends ConsumerWidget {
                         text,
                         style: dialogTextStyle ??
                             Theme.of(context).textTheme.titleLarge?.copyWith(
-                                  color: Theme.of(context).colorScheme.onBackground,
+                                  color: Colors.black,
                                 ),
                         textAlign: TextAlign.center,
                       ),

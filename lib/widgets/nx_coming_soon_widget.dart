@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class nxComingSoonWidget extends StatelessWidget {
-  const nxComingSoonWidget({
+class NxComingSoonWidget extends StatelessWidget {
+  const NxComingSoonWidget({
     super.key,
     this.svg,
     required this.text,
@@ -61,8 +61,8 @@ class nxComingSoonWidget extends StatelessWidget {
   }
 }
 
-class nxComingSoonPanel extends StatelessWidget {
-  const nxComingSoonPanel({
+class NxComingSoonPanel extends StatelessWidget {
+  const NxComingSoonPanel({
     super.key,
     this.svg,
     required this.text,
@@ -89,7 +89,7 @@ class nxComingSoonPanel extends StatelessWidget {
               child: Stack(
                 children: [
                   Positioned.fill(
-                    child: nxComingSoonWidget(
+                    child: NxComingSoonWidget(
                       svg: svg,
                       text: text,
                       comingSoonTitle: comingSoonTitle,

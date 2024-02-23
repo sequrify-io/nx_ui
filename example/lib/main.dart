@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:nx_local_notifications/nx_local_notifications.dart';
 import 'package:nx_localizations/nx_localizations.dart';
 
 import 'package:example/config.dart';
@@ -18,8 +19,7 @@ Future<void> main() async {
     WidgetsFlutterBinding.ensureInitialized();
     await Hive.initFlutter();
     await Hive.openBox<bool>(Config.nxBox);
-
-
+    await NotificationService.init();
 
     Isolate.current.addErrorListener(
       RawReceivePort((pair) async {
@@ -32,8 +32,7 @@ Future<void> main() async {
         child: MyApp(),
       ),
     );
-  }, (error, stackTrace) {
-  });
+  }, (error, stackTrace) {});
 }
 
 class MyApp extends ConsumerWidget {

@@ -1,14 +1,14 @@
 library nx_ui;
 
-export 'widgets/nxPrimaryButton.dart';
-export 'widgets/nxSecondaryButton.dart';
-export 'widgets/nxTile.dart';
-export 'widgets/nxShimmerBox.dart';
-export 'widgets/nxComingSoon.dart';
-export 'widgets/nxExpandableText.dart';
-export 'widgets/nxCustomDrawer.dart';
-export 'widgets/nxCustomSnackbar.dart';
-export 'widgets/nxEmptyScreen.dart';
-export 'widgets/nxBackgroundLayer.dart';
-export 'widgets/nxBackgroundCard.dart';
-export 'widgets/nxSearchTextField.dart';
+export 'widgets/nx_primary_button.dart';
+export 'widgets/nx_secondary_button.dart';
+export 'widgets/nx_shimmer_box.dart';
+export 'widgets/nx_coming_soon_widget.dart';
+export 'widgets/nx_expandable_text.dart';
+export 'widgets/nx_drawer.dart';
+export 'widgets/nx_snackbar.dart';
+export 'widgets/nx_empty_screen.dart';
+export 'widgets/nx_background_layer.dart';
+export 'widgets/nx_background_card.dart';
+export 'widgets/nx_search_text_field.dart';
+export 'widgets/nx_photo_card.dart';

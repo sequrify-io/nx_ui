@@ -24,10 +24,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/icon-arrow-right-button-white.png
-    - assets/icon-big-ok.png
-    - assets/icon-big-failed.png
-    - assets/icon-info.png
-    - assets/button-close@2x.png
     - assets/logout_icon.svg
+    - assets/search_icon.svg
 
