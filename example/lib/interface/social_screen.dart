@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import 'package:nx_main_screen/nx_main_screen.dart';

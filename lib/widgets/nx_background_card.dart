@@ -39,17 +39,9 @@ class NxBackgroundCard extends StatelessWidget {
             ),
         child: isScrollable
             ? SingleChildScrollView(
-                child: Wrap(
-                  children: [
-                    child,
-                  ],
-                ),
+                child: child,
               )
-            : Wrap(
-                children: [
-                  child,
-                ],
-              ),
+            : child,
       ),
     );
   }
