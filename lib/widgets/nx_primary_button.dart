@@ -6,6 +6,7 @@ class NxPrimaryButton extends StatelessWidget {
     required this.onPressed,
     super.key,
     this.buttonColor,
+    this.buttonDisableColor,
     this.buttonTextStyle,
     this.margin = const EdgeInsets.symmetric(vertical: 16),
     this.buttonWidth = double.maxFinite,
@@ -17,6 +18,7 @@ class NxPrimaryButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final EdgeInsetsGeometry? margin;
   final Color? buttonColor;
+  final Color? buttonDisableColor;
   final TextStyle? buttonTextStyle;
   final double? buttonWidth;
   final double? buttonHeight;
@@ -31,6 +33,7 @@ class NxPrimaryButton extends StatelessWidget {
           minWidth: buttonWidth,
           elevation: buttonElevation ?? 0,
           color: buttonColor ?? const Color(0xFF5F3ECC),
+          disabledColor: buttonDisableColor ?? const Color(0xFF5F3ECC),
           padding: const EdgeInsets.all(12),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius ?? 30),
