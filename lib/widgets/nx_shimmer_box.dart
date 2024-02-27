@@ -24,7 +24,8 @@ class NxShimmerBox extends StatelessWidget {
         width: width,
         height: height,
         decoration: BoxDecoration(
-          color: color ?? Theme.of(context).colorScheme.background,
+          color: color,
+          // ?? Theme.of(context).colorScheme.background,
           borderRadius: BorderRadius.circular(8.0),
         ),
       ),

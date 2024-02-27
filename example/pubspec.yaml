@@ -67,7 +67,7 @@ dependencies:
   nx_main_screen:
     git:
       url: https://github.com/sequrify-io/nx_main_screen.git
-      ref: v0.0.3
+      ref: v0.0.6
 
   nx_sequrify:
     git:

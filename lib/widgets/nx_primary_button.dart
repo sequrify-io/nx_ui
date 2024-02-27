@@ -13,6 +13,7 @@ class NxPrimaryButton extends StatelessWidget {
     this.buttonHeight,
     this.buttonElevation,
     this.borderRadius,
+    this.buttonStyle,
   });
   final String text;
   final VoidCallback? onPressed;
@@ -24,31 +25,40 @@ class NxPrimaryButton extends StatelessWidget {
   final double? buttonHeight;
   final double? buttonElevation;
   final double? borderRadius;
+  final ButtonStyle? buttonStyle;
 
   @override
   Widget build(BuildContext context) => Container(
         margin: margin,
-        child: MaterialButton(
+        child: SizedBox(
+          width: buttonWidth,
           height: buttonHeight,
-          minWidth: buttonWidth,
-          elevation: buttonElevation ?? 0,
-          color: buttonColor ?? const Color(0xFF5F3ECC),
-          disabledColor: buttonDisableColor ?? const Color(0xFF5F3ECC),
-          padding: const EdgeInsets.all(12),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(borderRadius ?? 30),
-          ),
-          onPressed: onPressed,
-          child: Text(
-            text,
-            textAlign: TextAlign.center,
-            style: buttonTextStyle ??
-                const TextStyle(
-                  fontSize: 14,
-                  fontFamily: 'Roboto',
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                ),
+          child: FilledButton(
+            // height: buttonHeight,
+            // minWidth: buttonWidth,
+            style: buttonStyle,
+            // elevation: buttonElevation ?? 0,
+            // color: buttonColor,
+            // ?? const Color(0xFF5F3ECC),
+            // disabledColor: buttonDisableColor,
+            // ?? const Color(0xFF5F3ECC),
+            // padding: const EdgeInsets.all(12),
+            // shape: RoundedRectangleBorder(
+            //   borderRadius: BorderRadius.circular(borderRadius ?? 30),
+            // ),
+            onPressed: onPressed,
+            child: Text(
+              text,
+              textAlign: TextAlign.center,
+              style: buttonTextStyle,
+              //  ??
+              //     const TextStyle(
+              //       fontSize: 14,
+              //       fontFamily: 'Roboto',
+              //       color: Colors.white,
+              //       fontWeight: FontWeight.w500,
+              //     ),
+            ),
           ),
         ),
       );

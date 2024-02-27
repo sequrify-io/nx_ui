@@ -12,7 +12,7 @@ class SocialScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return nxBasicScreen(
+    return NxBasicScreen(
       appContext: context,
       isFullScreen: true,
       body: Center(
@@ -35,7 +35,7 @@ class SocialScreen extends StatelessWidget {
                       height: 350,
                       context: context,
                       information: const Text('No elements'),
-                      color: Colors.white,
+                      // color: Colors.white,
                     ),
                     Row(
                       mainAxisSize: MainAxisSize.max,
@@ -71,12 +71,12 @@ class SocialScreen extends StatelessWidget {
         elevation: 0,
         title: const Text(
           'Social Screen',
-          style: TextStyle(
-            fontSize: 16,
-            fontFamily: 'Roboto',
-            fontWeight: FontWeight.w500,
-            color: Color(0xFF625B71),
-          ),
+          // style: TextStyle(
+          //   fontSize: 16,
+          //   fontFamily: 'Roboto',
+          //   fontWeight: FontWeight.w500,
+          //   color: Color(0xFF625B71),
+          // ),
         ),
         leading: IconButton(
           onPressed: () => Scaffold.of(context).openDrawer(),

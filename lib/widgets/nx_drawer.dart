@@ -13,6 +13,9 @@ class NxCustomDrawer extends StatelessWidget {
     this.signOutTextStyle,
     this.signOutIcon,
     this.sequrifyButton,
+    this.backgroundColor,
+    this.drawerWidth,
+    this.elevation,
   });
   final Map<List<dynamic>, Function()> drawerOptions;
   final EdgeInsets? padding;
@@ -23,10 +26,16 @@ class NxCustomDrawer extends StatelessWidget {
   final TextStyle? signOutTextStyle;
   final Widget? signOutIcon;
   final Widget? sequrifyButton;
+  final Color? backgroundColor;
+  final double? drawerWidth;
+  final double? elevation;
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: backgroundColor,
+      width: drawerWidth,
+      elevation: elevation,
       child: Container(
         height: MediaQuery.of(context).size.height,
         padding: padding ?? const EdgeInsets.all(22),
@@ -36,19 +45,16 @@ class NxCustomDrawer extends StatelessWidget {
               child: ListView(
                 children: [
                   drawerHeader ??
-                      const DrawerHeader(
+                      DrawerHeader(
                         child: Padding(
                           padding: EdgeInsets.only(bottom: 10),
                           child: Align(
                             alignment: Alignment.bottomLeft,
                             child: Text(
                               'Menu',
-                              style: TextStyle(
-                                fontSize: 25,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w700,
-                                color: Colors.black,
-                              ),
+                              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                  ),
                             ),
                           ),
                         ),
@@ -90,12 +96,9 @@ class NxCustomDrawer extends StatelessWidget {
       title: Text(
         text,
         style: textStyle ??
-            const TextStyle(
-              fontSize: 14,
-              fontFamily: 'Roboto',
-              fontWeight: FontWeight.w500,
-              color: Color(0xFF49454F),
-            ),
+            Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
       ),
       onTap: () {
         Navigator.pop(context);
@@ -114,21 +117,15 @@ class NxCustomDrawer extends StatelessWidget {
       alignment: Alignment.bottomLeft,
       child: Column(
         children: [
-          Divider(
-            color: Colors.black.withOpacity(0.1),
-            thickness: 1.5,
-          ),
+          const Divider(),
           buildDrawerOption(
             context: context,
             text: 'Sign out',
             navigateTo: signOutFunction,
             textStyle: signOutTextStyle ??
-                const TextStyle(
-                  fontSize: 14,
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.w500,
-                  color: Color(0xFF49454F),
-                ),
+                Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      fontWeight: FontWeight.w500,
+                    ),
             icon: SvgPicture.asset(
               'assets/logout_icon.svg',
               package: 'nx_ui',

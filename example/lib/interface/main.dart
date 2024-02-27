@@ -43,7 +43,7 @@ class MainScreen extends ConsumerWidget {
       ),
     ];
 
-    return nxMainScreen(
+    return NxMainScreen(
       appContext: context,
       drawer: Stack(
         children: [
@@ -110,8 +110,8 @@ class MainScreen extends ConsumerWidget {
       },
       pages: pages,
       items: items,
-      bottomNavUnselectedItemColor: Color(0xFF625B71),
-      bottomNavSelectedItemColor: Theme.of(context).colorScheme.onPrimary,
+      // bottomNavUnselectedItemColor: Color(0xFF625B71),
+      // bottomNavSelectedItemColor: Theme.of(context).colorScheme.onPrimary,
       // bottomNavUnselectedItemColor: Theme.of(context).colorScheme.onBackground,
     );
   }

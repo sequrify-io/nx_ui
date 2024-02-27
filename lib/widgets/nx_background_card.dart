@@ -28,7 +28,8 @@ class NxBackgroundCard extends StatelessWidget {
       height: MediaQuery.of(context).size.height * (height ?? 1.0),
       width: MediaQuery.of(context).size.width * (width ?? 1.0),
       child: Card(
-        color: backgroundColor ?? Colors.white,
+        color: backgroundColor,
+        // ?? Colors.white,
         margin: margin ?? EdgeInsets.zero,
         elevation: elevation ?? 10,
         semanticContainer: true,

@@ -6,30 +6,32 @@ class NxSearchTextField extends StatefulWidget {
     super.key,
     this.onChanged,
     this.onSubmitted,
-    this.readOnly = false,
-    this.cursorColor,
+    this.onTap,
     this.fillColor,
-    this.labelStyle,
+    this.textStyle,
     this.hintStyle,
-    this.suffixIcon,
+    this.hintText,
     this.controller,
     this.focusNode,
     this.width,
     this.height,
+    this.elevation,
+    this.trailing,
   });
 
   final Function(String)? onChanged;
   final Function(String)? onSubmitted;
-  final bool readOnly;
-  final Color? cursorColor;
-  final Color? fillColor;
-  final TextStyle? labelStyle;
-  final TextStyle? hintStyle;
-  final Widget? suffixIcon;
+  final Function()? onTap;
+  final MaterialStateProperty<Color?>? fillColor;
+  final MaterialStateProperty<TextStyle?>? textStyle;
+  final MaterialStateProperty<TextStyle?>? hintStyle;
+  final String? hintText;
   final TextEditingController? controller;
   final FocusNode? focusNode;
   final double? width;
   final double? height;
+  final MaterialStatePropertyAll<double>? elevation;
+  final Iterable<Widget>? trailing;
 
   @override
   State<NxSearchTextField> createState() => _SearchTextFieldState();
@@ -53,20 +55,36 @@ class _SearchTextFieldState extends State<NxSearchTextField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: widget.width,
-      height: widget.height,
-      child: TextField(
-        readOnly: widget.readOnly,
-        controller: widget.controller,
-        focusNode: widget.focusNode ?? _focus,
-        onChanged: widget.onChanged,
-        onSubmitted: widget.onSubmitted,
-        decoration: InputDecoration(
-          labelText: 'Search',
-          border: const OutlineInputBorder(),
-          suffixIcon: widget.suffixIcon ?? const Icon(Ionicons.search),
-        ),
-      ),
-    );
+        width: widget.width,
+        height: widget.height,
+        child: SearchBar(
+          textStyle: widget.textStyle,
+          focusNode: widget.focusNode ?? _focus,
+          backgroundColor: widget.fillColor,
+          controller: widget.controller,
+          hintText: widget.hintText ?? 'Search',
+          hintStyle: widget.hintStyle,
+          elevation: widget.elevation ?? const MaterialStatePropertyAll<double>(0),
+          padding: const MaterialStatePropertyAll<EdgeInsets>(EdgeInsets.symmetric(horizontal: 16.0)),
+          onTap: widget.onTap,
+          onSubmitted: widget.onSubmitted,
+          onChanged: widget.onChanged,
+          leading: const Icon(Icons.search),
+          trailing: widget.trailing,
+        )
+
+        // TextField(
+        //   readOnly: widget.readOnly,
+        //   controller: widget.controller,
+        //   focusNode: widget.focusNode ?? _focus,
+        //   onChanged: widget.onChanged,
+        //   onSubmitted: widget.onSubmitted,
+        //   decoration: InputDecoration(
+        //     labelText: 'Search',
+        //     border: const OutlineInputBorder(),
+        //     suffixIcon: widget.suffixIcon ?? const Icon(Ionicons.search),
+        //   ),
+        // ),
+        );
   }
 }

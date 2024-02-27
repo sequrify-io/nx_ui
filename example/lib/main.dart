@@ -53,8 +53,8 @@ class MyApp extends ConsumerWidget {
         return child ?? Container();
       },
       // showSemanticsDebugger: true,
-      theme: lightAppTheme,
-      darkTheme: darkAppTheme,
+      theme: MaterialTheme(Theme.of(context).textTheme).light(),
+      darkTheme: MaterialTheme(Theme.of(context).textTheme).dark(),
       routerConfig: router,
       localizationsDelegates: const [
         AppLocalizations.delegate,

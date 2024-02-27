@@ -6,14 +6,14 @@ class NxEmptyScreen extends StatelessWidget {
     super.key,
     required this.context,
     required this.information,
-    required this.color,
+    this.color,
     this.icon = Ionicons.sad_outline,
     this.height,
     this.width,
   });
   final BuildContext context;
   final Text information;
-  final Color color;
+  final Color? color;
   final IconData? icon;
   final double? height;
   final double? width;
@@ -21,7 +21,7 @@ class NxEmptyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
         decoration: BoxDecoration(
-          color: color.withOpacity(0.2),
+          color: color,
           borderRadius: const BorderRadius.all(
             Radius.circular(20),
           ),
