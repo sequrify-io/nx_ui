@@ -27,7 +27,7 @@ Add the package to pubspec:
 nx_ui:
   git:
     url: https://github.com/sequrify-io/nx_ui.git
-    ref: v0.0.12
+    ref: v0.0.15
 ```
 
 ## Usage and description of widgets
@@ -514,6 +514,7 @@ const NxPhotoCard(
                       imagePath: 'assets/images/new_york.png',
                     ),
 ```
+
 It takes parameters:
 
 final String? imagePath;

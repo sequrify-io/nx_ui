@@ -31,28 +31,11 @@ class NxSecondaryButton extends StatelessWidget {
           height: buttonHeight,
           child: OutlinedButton(
             style: buttonStyle,
-            // ??
-            //     OutlinedButton.styleFrom(
-            //       backgroundColor: Colors.white,
-            //       elevation: 0,
-            //       shape: RoundedRectangleBorder(
-            //         borderRadius: BorderRadius.circular(borderRadius ?? 30),
-            //       ),
-            //       padding: const EdgeInsets.all(12),
-            //       side: const BorderSide(),
-            //     ),
             onPressed: onPressed,
             child: Text(
               text,
               textAlign: TextAlign.center,
               style: buttonTextStyle,
-              // ??
-              // const TextStyle(
-              //   fontSize: 14,
-              //   fontFamily: 'Roboto',
-              //   color: const Color(0xFF5F3ECC),
-              //   fontWeight: FontWeight.w500,
-              // ),
             ),
           ),
         ),
