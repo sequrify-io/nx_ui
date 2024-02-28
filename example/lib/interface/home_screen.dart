@@ -46,7 +46,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final notificationList = ref.watch(notificationListProvider);
 
     return NxBasicScreen(
-      appContext: context,
       isFullScreen: true,
       extendBodyBehindAppBar: true,
       appBarBackgroundColor: Colors.transparent,

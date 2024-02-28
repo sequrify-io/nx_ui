@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 
 class NxSearchTextField extends StatefulWidget {
   const NxSearchTextField({
@@ -55,36 +54,23 @@ class _SearchTextFieldState extends State<NxSearchTextField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        width: widget.width,
-        height: widget.height,
-        child: SearchBar(
-          textStyle: widget.textStyle,
-          focusNode: widget.focusNode ?? _focus,
-          backgroundColor: widget.fillColor,
-          controller: widget.controller,
-          hintText: widget.hintText ?? 'Search',
-          hintStyle: widget.hintStyle,
-          elevation: widget.elevation ?? const MaterialStatePropertyAll<double>(0),
-          padding: const MaterialStatePropertyAll<EdgeInsets>(EdgeInsets.symmetric(horizontal: 16.0)),
-          onTap: widget.onTap,
-          onSubmitted: widget.onSubmitted,
-          onChanged: widget.onChanged,
-          leading: const Icon(Icons.search),
-          trailing: widget.trailing,
-        )
-
-        // TextField(
-        //   readOnly: widget.readOnly,
-        //   controller: widget.controller,
-        //   focusNode: widget.focusNode ?? _focus,
-        //   onChanged: widget.onChanged,
-        //   onSubmitted: widget.onSubmitted,
-        //   decoration: InputDecoration(
-        //     labelText: 'Search',
-        //     border: const OutlineInputBorder(),
-        //     suffixIcon: widget.suffixIcon ?? const Icon(Ionicons.search),
-        //   ),
-        // ),
-        );
+      width: widget.width,
+      height: widget.height,
+      child: SearchBar(
+        textStyle: widget.textStyle,
+        focusNode: widget.focusNode ?? _focus,
+        backgroundColor: widget.fillColor,
+        controller: widget.controller,
+        hintText: widget.hintText ?? 'Search',
+        hintStyle: widget.hintStyle,
+        elevation: widget.elevation ?? const MaterialStatePropertyAll<double>(0),
+        padding: const MaterialStatePropertyAll<EdgeInsets>(EdgeInsets.symmetric(horizontal: 16.0)),
+        onTap: widget.onTap,
+        onSubmitted: widget.onSubmitted,
+        onChanged: widget.onChanged,
+        leading: const Icon(Icons.search),
+        trailing: widget.trailing,
+      ),
+    );
   }
 }

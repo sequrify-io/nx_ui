@@ -7,6 +7,7 @@ This package provides ui widgets.
 UI widgets provided in package:
 
 - nx_drawer
+- nx_navigation_drawer
 - nx_background_card
 - nx_background_layer
 - nx_empty_screen
@@ -27,7 +28,7 @@ Add the package to pubspec:
 nx_ui:
   git:
     url: https://github.com/sequrify-io/nx_ui.git
-    ref: v0.0.15
+    ref: v0.0.16
 ```
 
 ## Usage and description of widgets
@@ -99,6 +100,90 @@ final Function? signOutFunction - function invoked after clicking sign out.
 final TextStyle? signOutTextStyle;
 final Widget? signOutIcon;
 final Widget? sequrifyButton;
+
+### nx_navigation_drawer
+
+Another proposition of drawer, this time NavigationDrawer from Material3.
+
+<img src="images/new/navigation_drawer.png" alt="drawer" width="200"/>
+
+Example usage:
+
+```dart
+
+    const drawerDestinations = <Destination>[
+      Destination('Profile', Icon(Icons.person_2_outlined), Icon(Icons.person_2)),
+      Destination('Notifications', Icon(Icons.notifications_outlined), Icon(Icons.notifications)),
+      Destination('Settings', Icon(Icons.settings_outlined), Icon(Icons.settings)),
+    ];
+
+...
+ NxCustomNavigationDrawer(
+            sequrifyButton: SequrifyButton(
+              onPressed: () {},
+            ),
+            destinations: drawerDestinations,
+            signOutDestination: Destination(
+              'Sign out',
+              SvgPicture.asset(
+                'assets/logout_icon.svg',
+                package: 'nx_ui',
+              ),
+              SvgPicture.asset(
+                'assets/logout_icon.svg',
+                package: 'nx_ui',
+              ),
+            ),
+            onDestinationSelected: (int index) {
+              context.goNamed(
+                'home',
+                pathParameters: {
+                  'tab': '$index',
+                },
+              );
+            },
+            selectedIndex: currentTab,
+          ),
+
+```
+
+You have to provide one required parameter:
+List<Destination> destinations - list of Destination model objects, that are displayed in drawer.
+
+Destination model also comes with nx_ui package:
+
+```dart
+class Destination {
+  const Destination(
+    this.label,
+    this.icon,
+    this.selectedIcon,
+  );
+
+  final String label;
+  final Widget icon;
+  final Widget selectedIcon;
+}
+
+```
+
+It has label, icon and selectedIcon attributes.
+
+Additionaly NxCustomNavigationDrawer takes parameters:
+
+final Function(int)? onDestinationSelected;
+final int? selectedIndex;
+final List<Destination> destinations;
+final Destination? signOutDestination;
+final TextStyle? headerTextStyle;
+final TextStyle? optionTextStyle;
+final Widget? sequrifyButton;
+final Color? backgroundColor;
+final double? elevation;
+final Color? shadowColor;
+final Color? surfaceTintColor;
+final Color? indicatorColor;
+final ShapeBorder? indicatorShape;
 
 ### nx_background_card
 

@@ -12,3 +12,5 @@ export 'widgets/nx_background_layer.dart';
 export 'widgets/nx_background_card.dart';
 export 'widgets/nx_search_text_field.dart';
 export 'widgets/nx_photo_card.dart';
+export 'models/destination.dart';
+export 'widgets/nx_navigation_drawer.dart';

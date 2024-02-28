@@ -5,7 +5,6 @@ class NxSecondaryButton extends StatelessWidget {
     required this.text,
     required this.onPressed,
     super.key,
-    this.buttonColor,
     this.buttonTextStyle,
     this.margin = const EdgeInsets.symmetric(vertical: 16),
     this.buttonWidth = double.maxFinite,
@@ -16,7 +15,6 @@ class NxSecondaryButton extends StatelessWidget {
   final String text;
   final VoidCallback? onPressed;
   final EdgeInsetsGeometry? margin;
-  final Color? buttonColor;
   final TextStyle? buttonTextStyle;
   final double? buttonWidth;
   final double? buttonHeight;

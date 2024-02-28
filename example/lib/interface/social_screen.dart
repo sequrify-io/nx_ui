@@ -13,7 +13,6 @@ class SocialScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NxBasicScreen(
-      appContext: context,
       isFullScreen: true,
       body: Center(
         child: Stack(
