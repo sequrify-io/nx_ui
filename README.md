@@ -28,7 +28,7 @@ Add the package to pubspec:
 nx_ui:
   git:
     url: https://github.com/sequrify-io/nx_ui.git
-    ref: v0.0.16
+    ref: v0.0.17
 ```
 
 ## Usage and description of widgets
@@ -294,8 +294,8 @@ drawer: Stack(
 ...
 ```
 
-It takes 4 parameters:
-
+It takes 5 parameters:
+final bool fromAssets - by default true. If set to false, then network.image will be used.
 final String imagePath - path to the image
 final double imageShift - distance from the bottom of the stack
 final double imageOpacity - image opacity
@@ -457,7 +457,7 @@ Example usage:
 
 ```
 
-<img src="images/new/photo_card.png" alt="nxPrimaryButton" width="200"/>
+<img src="images/new/home.png" alt="nxPrimaryButton" width="200"/>
 
 You have to provide two required parameters:
 
@@ -504,7 +504,7 @@ Example usage:
 
 ```
 
-<img src="images/new/photo_card.png" alt="nxSecondaryButton" width="200"/>
+<img src="images/new/home.png" alt="nxSecondaryButton" width="200"/>
 
 You have to provide to widget two required parameters:
 

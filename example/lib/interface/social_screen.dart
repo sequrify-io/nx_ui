@@ -19,6 +19,8 @@ class SocialScreen extends StatelessWidget {
           children: [
             NxBackgroundLayer(
               backgroundColor: Colors.black.withOpacity(0.3),
+              // fromAssets: false,
+              // imagePath: 'https://t4.ftcdn.net/jpg/03/70/16/65/240_F_370166507_4euZmJB9xM4Q7cSEfczN3rkmgdX1fnxZ.jpg',
             ),
             Positioned(
               bottom: 0,

@@ -16,6 +16,8 @@ class NxSearchTextField extends StatefulWidget {
     this.height,
     this.elevation,
     this.trailing,
+    this.side,
+    this.shape,
   });
 
   final Function(String)? onChanged;
@@ -24,6 +26,8 @@ class NxSearchTextField extends StatefulWidget {
   final MaterialStateProperty<Color?>? fillColor;
   final MaterialStateProperty<TextStyle?>? textStyle;
   final MaterialStateProperty<TextStyle?>? hintStyle;
+  final MaterialStateProperty<BorderSide?>? side;
+  final MaterialStateProperty<OutlinedBorder?>? shape;
   final String? hintText;
   final TextEditingController? controller;
   final FocusNode? focusNode;
@@ -57,8 +61,11 @@ class _SearchTextFieldState extends State<NxSearchTextField> {
       width: widget.width,
       height: widget.height,
       child: SearchBar(
+        side: widget.side,
+        shape: widget.shape,
         textStyle: widget.textStyle,
         focusNode: widget.focusNode ?? _focus,
+        surfaceTintColor: MaterialStatePropertyAll<Color>(Colors.black),
         backgroundColor: widget.fillColor,
         controller: widget.controller,
         hintText: widget.hintText ?? 'Search',
