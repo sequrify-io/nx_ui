@@ -3,8 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class NxCustomDrawer extends StatelessWidget {
   const NxCustomDrawer({
-    super.key,
-    required this.drawerOptions,
+    required this.drawerOptions, super.key,
     this.padding,
     this.drawerHeader,
     this.optionTextStyle,
@@ -47,7 +46,7 @@ class NxCustomDrawer extends StatelessWidget {
                   drawerHeader ??
                       DrawerHeader(
                         child: Padding(
-                          padding: EdgeInsets.only(bottom: 10),
+                          padding: const EdgeInsets.only(bottom: 10),
                           child: Align(
                             alignment: Alignment.bottomLeft,
                             child: Text(

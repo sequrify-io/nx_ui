@@ -1,7 +1,8 @@
 name: nx_ui
-description: A new Flutter package project.
-version: 0.0.17
-
+description: UI widgets
+version: 0.0.18
+repository: https://github.com/sequrify-io/nx_ui
+license: BSD-3-Clause
 
 environment:
   sdk: '>=3.0.1 <4.0.0'

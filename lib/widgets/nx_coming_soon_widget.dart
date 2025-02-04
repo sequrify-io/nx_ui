@@ -3,10 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class NxComingSoonWidget extends StatelessWidget {
   const NxComingSoonWidget({
-    super.key,
+    required this.text, required this.comingSoonTitle, super.key,
     this.svg,
-    required this.text,
-    required this.comingSoonTitle,
     this.textStyleTitle,
     this.textStyleBody,
   });
@@ -22,7 +20,6 @@ class NxComingSoonWidget extends StatelessWidget {
     BuildContext context,
   ) {
     return Column(
-      mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         if (svg != null)
@@ -37,7 +34,7 @@ class NxComingSoonWidget extends StatelessWidget {
           comingSoonTitle,
           style: textStyleTitle ??
               Theme.of(context).textTheme.displayLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
+                    color: Theme.of(context).colorScheme.onSurface,
                   ),
         ),
         const SizedBox(height: 20),
@@ -51,7 +48,7 @@ class NxComingSoonWidget extends StatelessWidget {
             textAlign: TextAlign.center,
             style: textStyleBody ??
                 Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: Theme.of(context).colorScheme.onBackground,
+                      color: Theme.of(context).colorScheme.onSurface,
                       height: 1.5,
                     ),
           ),
@@ -63,10 +60,8 @@ class NxComingSoonWidget extends StatelessWidget {
 
 class NxComingSoonPanel extends StatelessWidget {
   const NxComingSoonPanel({
-    super.key,
+    required this.text, required this.comingSoonTitle, super.key,
     this.svg,
-    required this.text,
-    required this.comingSoonTitle,
     this.textStyleTitle,
     this.textStyleBody,
   });
@@ -85,7 +80,7 @@ class NxComingSoonPanel extends StatelessWidget {
           return ConstrainedBox(
             constraints: BoxConstraints(minHeight: viewportConstraints.maxHeight),
             child: Padding(
-              padding: const EdgeInsets.all(50.0),
+              padding: const EdgeInsets.all(50),
               child: Stack(
                 children: [
                   Positioned.fill(

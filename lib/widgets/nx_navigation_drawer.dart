@@ -4,8 +4,7 @@ import 'package:nx_ui/models/destination.dart';
 
 class NxCustomNavigationDrawer extends StatelessWidget {
   const NxCustomNavigationDrawer({
-    super.key,
-    required this.destinations,
+    required this.destinations, super.key,
     this.onDestinationSelected,
     this.selectedIndex,
     this.signOutDestination,
@@ -66,7 +65,7 @@ class NxCustomNavigationDrawer extends StatelessWidget {
           },
         ),
         Padding(
-          padding: EdgeInsets.fromLTRB(28, 30, 28, 10),
+          padding: const EdgeInsets.fromLTRB(28, 30, 28, 10),
           child: Align(
             alignment: Alignment.bottomLeft,
             child: sequrifyButton,

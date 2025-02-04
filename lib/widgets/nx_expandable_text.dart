@@ -4,9 +4,7 @@ import 'package:ionicons/ionicons.dart';
 
 class NxExpandableText extends StatelessWidget {
   const NxExpandableText({
-    super.key,
-    required this.text,
-    required this.buttonText,
+    required this.text, required this.buttonText, super.key,
     this.icon,
     this.dialogTextStyle,
     this.textStyle,
@@ -71,8 +69,7 @@ class NxExpandableText extends StatelessWidget {
 
 class TextDialog extends ConsumerWidget {
   const TextDialog({
-    super.key,
-    required this.text,
+    required this.text, super.key,
     this.icon,
     this.dialogTextStyle,
     this.backgroundColor,
@@ -87,12 +84,12 @@ class TextDialog extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Dialog(
       backgroundColor: backgroundColor,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Stack(
         alignment: Alignment.topRight,
         children: [
           Padding(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.all(30),
             child: IconButton(
               onPressed: () {
                 Navigator.pop(context);
@@ -101,7 +98,7 @@ class TextDialog extends ConsumerWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(60.0),
+            padding: const EdgeInsets.all(60),
             child: Container(
               constraints: const BoxConstraints(maxHeight: 200),
               width: 450,

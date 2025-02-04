@@ -78,7 +78,7 @@ class NxCustomSnackBar {
               child: SelectableText(
                 message,
               ),
-            )
+            ),
           ],
         ),
       ),

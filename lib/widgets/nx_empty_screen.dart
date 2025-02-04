@@ -3,9 +3,7 @@ import 'package:ionicons/ionicons.dart';
 
 class NxEmptyScreen extends StatelessWidget {
   const NxEmptyScreen({
-    super.key,
-    required this.context,
-    required this.information,
+    required this.context, required this.information, super.key,
     this.color,
     this.icon = Ionicons.sad_outline,
     this.height,
@@ -30,7 +28,6 @@ class NxEmptyScreen extends StatelessWidget {
         width: width ?? MediaQuery.of(context).size.width,
         child: Center(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
@@ -38,7 +35,7 @@ class NxEmptyScreen extends StatelessWidget {
                 size: 25,
                 color: Colors.grey,
               ),
-              Padding(padding: const EdgeInsets.all(20), child: information)
+              Padding(padding: const EdgeInsets.all(20), child: information),
             ],
           ),
         ),

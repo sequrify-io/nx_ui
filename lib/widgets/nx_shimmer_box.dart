@@ -18,15 +18,14 @@ class NxShimmerBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer(
-      color: Theme.of(context).colorScheme.surfaceVariant,
+      color: Theme.of(context).colorScheme.surfaceContainerHighest,
       colorOpacity: opacity,
       child: Container(
         width: width,
         height: height,
         decoration: BoxDecoration(
           color: color,
-          // ?? Theme.of(context).colorScheme.background,
-          borderRadius: BorderRadius.circular(8.0),
+          borderRadius: BorderRadius.circular(8),
         ),
       ),
     );

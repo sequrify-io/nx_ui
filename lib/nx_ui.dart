@@ -1,5 +1,3 @@
-library nx_ui;
-
 export 'widgets/nx_primary_button.dart';
 export 'widgets/nx_secondary_button.dart';
 export 'widgets/nx_shimmer_box.dart';

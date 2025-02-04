@@ -23,17 +23,17 @@ class NxSearchTextField extends StatefulWidget {
   final Function(String)? onChanged;
   final Function(String)? onSubmitted;
   final Function()? onTap;
-  final MaterialStateProperty<Color?>? fillColor;
-  final MaterialStateProperty<TextStyle?>? textStyle;
-  final MaterialStateProperty<TextStyle?>? hintStyle;
-  final MaterialStateProperty<BorderSide?>? side;
-  final MaterialStateProperty<OutlinedBorder?>? shape;
+  final WidgetStateProperty<Color?>? fillColor;
+  final WidgetStateProperty<TextStyle?>? textStyle;
+  final WidgetStateProperty<TextStyle?>? hintStyle;
+  final WidgetStateProperty<BorderSide?>? side;
+  final WidgetStateProperty<OutlinedBorder?>? shape;
   final String? hintText;
   final TextEditingController? controller;
   final FocusNode? focusNode;
   final double? width;
   final double? height;
-  final MaterialStatePropertyAll<double>? elevation;
+  final WidgetStatePropertyAll<double>? elevation;
   final Iterable<Widget>? trailing;
 
   @override
@@ -65,13 +65,13 @@ class _SearchTextFieldState extends State<NxSearchTextField> {
         shape: widget.shape,
         textStyle: widget.textStyle,
         focusNode: widget.focusNode ?? _focus,
-        surfaceTintColor: MaterialStatePropertyAll<Color>(Colors.black),
+        surfaceTintColor: const WidgetStatePropertyAll<Color>(Colors.black),
         backgroundColor: widget.fillColor,
         controller: widget.controller,
         hintText: widget.hintText ?? 'Search',
         hintStyle: widget.hintStyle,
-        elevation: widget.elevation ?? const MaterialStatePropertyAll<double>(0),
-        padding: const MaterialStatePropertyAll<EdgeInsets>(EdgeInsets.symmetric(horizontal: 16.0)),
+        elevation: widget.elevation ?? const WidgetStatePropertyAll<double>(0),
+        padding: const WidgetStatePropertyAll<EdgeInsets>(EdgeInsets.symmetric(horizontal: 16)),
         onTap: widget.onTap,
         onSubmitted: widget.onSubmitted,
         onChanged: widget.onChanged,

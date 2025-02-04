@@ -29,10 +29,8 @@ class NxBackgroundCard extends StatelessWidget {
       width: MediaQuery.of(context).size.width * (width ?? 1.0),
       child: Card(
         color: backgroundColor,
-        // ?? Colors.white,
         margin: margin ?? EdgeInsets.zero,
         elevation: elevation ?? 10,
-        semanticContainer: true,
         clipBehavior: Clip.antiAliasWithSaveLayer,
         shape: shape ??
             const RoundedRectangleBorder(
