@@ -154,7 +154,8 @@ class _ExampleScreenState extends State<ExampleScreen> {
                                 ),
                                 SizedBox(height: 16),
                                 NxExpandableText(
-                                  text: 'This is a long text that can be expanded to show more content. Click the button below to see the full text in a dialog.',
+                                  text:
+                                      'This is a long text that can be expanded to show more content. Click the button below to see the full text in a dialog.',
                                   buttonText: 'Read More',
                                   maxLines: 2,
                                 ),
@@ -192,4 +193,4 @@ class _ExampleScreenState extends State<ExampleScreen> {
       ),
     );
   }
-} 
+}

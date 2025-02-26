@@ -1,3 +1,7 @@
+## 0.0.21
+
+* Improve code formatting
+
 ## 0.0.20
 
 * Added comprehensive example app showcasing all widgets

@@ -186,10 +186,11 @@ class NxCustomDrawer extends StatelessWidget {
             ),
             if (withSignOutOption)
               buildSignOutOption(
-                  context: context,
-                  signOutFunction: signOutFunction ?? () {},
-                  signOutTextStyle: signOutTextStyle,
-                  icon: signOutIcon,)
+                context: context,
+                signOutFunction: signOutFunction ?? () {},
+                signOutTextStyle: signOutTextStyle,
+                icon: signOutIcon,
+              )
             else
               const SizedBox.shrink(),
           ],
