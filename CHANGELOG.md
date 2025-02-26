@@ -1,3 +1,8 @@
+## 0.0.20
+
+* Added comprehensive example app showcasing all widgets
+* Enhanced widget documentation
+
 ## 0.0.19
 
 * Documentation improvements

@@ -44,12 +44,39 @@ class NxSecondaryButton extends StatelessWidget {
     this.buttonHeight,
     this.buttonStyle,
   });
+
+  /// The text to display on the button.
   final String text;
+
+  /// Called when the button is tapped or otherwise activated.
+  ///
+  /// If this is null, the button will be disabled.
   final VoidCallback? onPressed;
+
+  /// The empty space to surround the button with.
+  ///
+  /// Defaults to vertical margin of 16 logical pixels.
   final EdgeInsetsGeometry? margin;
+
+  /// The text style to use for the button's label.
+  ///
+  /// If null, the button will use the default text style for [OutlinedButton].
   final TextStyle? buttonTextStyle;
+
+  /// The width of the button.
+  ///
+  /// Defaults to [double.maxFinite] which makes the button expand to fill its parent.
   final double? buttonWidth;
+
+  /// The height of the button.
+  ///
+  /// If null, the button will size itself to its content.
   final double? buttonHeight;
+
+  /// Style configuration for the button.
+  ///
+  /// This allows complete customization of the button's appearance.
+  /// If null, the default [OutlinedButton] style will be used.
   final ButtonStyle? buttonStyle;
 
   @override

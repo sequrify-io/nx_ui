@@ -129,7 +129,7 @@ Optional:
 
 Modern navigation drawer with support for destinations and sign-out functionality.
 
-![Navigation drawer example](images/new/navigation_drawer.png)
+![Navigation drawer example](https://raw.githubusercontent.com/sequrify-io/nx_ui/main/images/new/navigation_drawer.png)
 
 Example usage:
 
@@ -196,7 +196,7 @@ Optional:
 
 Resizable background card widget, adjustable to the screen. It goes well with Stack widget.
 
-![Background card example](images/new/background_card.png)
+![Background card example](https://raw.githubusercontent.com/sequrify-io/nx_ui/main/images/new/background_card.png)
 
 Example usage:
 
@@ -270,8 +270,8 @@ Optional:
 
 Container widget that works as a background image or color layer.
 
-![Background layer examples](images/new/background_card.png)
-![Background layer with drawer](images/new/drawer.png)
+![Background layer examples](https://raw.githubusercontent.com/sequrify-io/nx_ui/main/images/new/background_card.png)
+![Background layer with drawer](https://raw.githubusercontent.com/sequrify-io/nx_ui/main/images/new/drawer.png)
 
 Example usage:
 
@@ -306,7 +306,7 @@ Optional:
 
 Empty customizable widget that can be used when there's no content to display.
 
-![Empty screen example](images/new/background_card.png)
+![Empty screen example](https://raw.githubusercontent.com/sequrify-io/nx_ui/main/images/new/background_card.png)
 
 Example usage:
 
@@ -335,7 +335,7 @@ Optional:
 
 A Material 3 search field with support for different visual states and custom styling.
 
-![Search field example](images/new/active_search.png)
+![Search field example](https://raw.githubusercontent.com/sequrify-io/nx_ui/main/images/new/active_search.png)
 
 Example usage:
 
@@ -386,7 +386,7 @@ Optional:
 
 Widget for displaying a "coming soon" message with optional icon. Also provides a panel version (`NxComingSoonPanel`) that wraps the widget in a full-screen scaffold.
 
-![Coming soon widget](images/nxComingSoon.png)
+![Coming soon widget](https://raw.githubusercontent.com/sequrify-io/nx_ui/main/images/nxComingSoon.png)
 
 Example usage:
 
@@ -419,7 +419,7 @@ Optional:
 
 Widget for displaying truncated text with an option to expand it in a dialog.
 
-![Expandable text example](images/new/expandable_text.png)
+![Expandable text example](https://raw.githubusercontent.com/sequrify-io/nx_ui/main/images/new/expandable_text.png)
 
 Example usage:
 
@@ -449,7 +449,7 @@ Optional:
 
 Customizable filled and outlined buttons with flexible styling options.
 
-![Primary button example](images/new/home.png)
+![Primary button example](https://raw.githubusercontent.com/sequrify-io/nx_ui/main/images/new/home.png)
 
 Example usage:
 
@@ -540,7 +540,7 @@ Optional:
 
 A utility class providing snackbar notifications with predefined styles.
 
-![Snackbar examples](images/new/snackbar.png)
+![Snackbar examples](https://raw.githubusercontent.com/sequrify-io/nx_ui/main/images/new/snackbar.png)
 
 Example usage:
 

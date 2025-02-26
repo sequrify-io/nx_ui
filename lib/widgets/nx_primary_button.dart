@@ -53,12 +53,45 @@ class NxPrimaryButton extends StatelessWidget {
     this.buttonHeight,
     this.buttonStyle,
   });
+
+  /// The text to display on the button.
+  ///
+  /// This text will be centered within the button and can be styled using [buttonTextStyle].
   final String text;
+
+  /// Called when the button is tapped or otherwise activated.
+  ///
+  /// If this is null, the button will be disabled and will not respond to touch.
   final VoidCallback? onPressed;
+
+  /// The empty space to surround the button with.
+  ///
+  /// Defaults to vertical margin of 16 logical pixels.
+  /// Use [EdgeInsets.zero] to remove all margin.
   final EdgeInsetsGeometry? margin;
+
+  /// The text style to use for the button's label.
+  ///
+  /// If null, the button will use the default text style for [FilledButton].
   final TextStyle? buttonTextStyle;
+
+  /// The width of the button.
+  ///
+  /// Defaults to [double.maxFinite] which makes the button expand to fill its parent.
+  /// Set to a specific value to constrain the button's width.
   final double? buttonWidth;
+
+  /// The height of the button.
+  ///
+  /// If null, the button will size itself to its content.
+  /// Set to a specific value to force a fixed height.
   final double? buttonHeight;
+
+  /// Style configuration for the button.
+  ///
+  /// This allows complete customization of the button's appearance including
+  /// background color, elevation, shape, and state-specific styles.
+  /// If null, the default [FilledButton] style will be used.
   final ButtonStyle? buttonStyle;
 
   @override
