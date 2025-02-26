@@ -4,7 +4,9 @@ import 'package:ionicons/ionicons.dart';
 
 class NxExpandableText extends StatelessWidget {
   const NxExpandableText({
-    required this.text, required this.buttonText, super.key,
+    required this.text,
+    required this.buttonText,
+    super.key,
     this.icon,
     this.dialogTextStyle,
     this.textStyle,
@@ -69,7 +71,8 @@ class NxExpandableText extends StatelessWidget {
 
 class TextDialog extends ConsumerWidget {
   const TextDialog({
-    required this.text, super.key,
+    required this.text,
+    super.key,
     this.icon,
     this.dialogTextStyle,
     this.backgroundColor,

@@ -34,7 +34,8 @@ class NxBackgroundCard extends StatelessWidget {
         clipBehavior: Clip.antiAliasWithSaveLayer,
         shape: shape ??
             const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(topRight: Radius.circular(40), topLeft: Radius.circular(40)),
+              borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(40), topLeft: Radius.circular(40)),
             ),
         child: isScrollable
             ? SingleChildScrollView(

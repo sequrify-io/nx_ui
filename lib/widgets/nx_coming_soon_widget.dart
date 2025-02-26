@@ -3,7 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class NxComingSoonWidget extends StatelessWidget {
   const NxComingSoonWidget({
-    required this.text, required this.comingSoonTitle, super.key,
+    required this.text,
+    required this.comingSoonTitle,
+    super.key,
     this.svg,
     this.textStyleTitle,
     this.textStyleBody,
@@ -27,7 +29,8 @@ class NxComingSoonWidget extends StatelessWidget {
             svg!.bytesLoader,
             height: 100,
             width: 100,
-            colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.primary, BlendMode.srcIn),
+            colorFilter: ColorFilter.mode(
+                Theme.of(context).colorScheme.primary, BlendMode.srcIn),
           ),
         const SizedBox(height: 30),
         Text(
@@ -60,7 +63,9 @@ class NxComingSoonWidget extends StatelessWidget {
 
 class NxComingSoonPanel extends StatelessWidget {
   const NxComingSoonPanel({
-    required this.text, required this.comingSoonTitle, super.key,
+    required this.text,
+    required this.comingSoonTitle,
+    super.key,
     this.svg,
     this.textStyleTitle,
     this.textStyleBody,
@@ -78,7 +83,8 @@ class NxComingSoonPanel extends StatelessWidget {
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints viewportConstraints) {
           return ConstrainedBox(
-            constraints: BoxConstraints(minHeight: viewportConstraints.maxHeight),
+            constraints:
+                BoxConstraints(minHeight: viewportConstraints.maxHeight),
             child: Padding(
               padding: const EdgeInsets.all(50),
               child: Stack(

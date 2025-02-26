@@ -1,6 +1,6 @@
 name: nx_ui
-description: UI widgets
-version: 0.0.18
+description: A collection of customizable Flutter widgets for building modern user interfaces, featuring drawers, cards, buttons, and utility components with flexible styling options.
+version: 0.0.19
 repository: https://github.com/sequrify-io/nx_ui
 license: BSD-3-Clause
 

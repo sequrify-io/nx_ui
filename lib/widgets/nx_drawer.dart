@@ -3,7 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class NxCustomDrawer extends StatelessWidget {
   const NxCustomDrawer({
-    required this.drawerOptions, super.key,
+    required this.drawerOptions,
+    super.key,
     this.padding,
     this.drawerHeader,
     this.optionTextStyle,
@@ -51,7 +52,10 @@ class NxCustomDrawer extends StatelessWidget {
                             alignment: Alignment.bottomLeft,
                             child: Text(
                               'Menu',
-                              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineMedium!
+                                  .copyWith(
                                     fontWeight: FontWeight.w700,
                                   ),
                             ),
@@ -76,7 +80,14 @@ class NxCustomDrawer extends StatelessWidget {
                 child: sequrifyButton,
               ),
             ),
-            if (withSignOutOption) buildSignOutOption(context: context, signOutFunction: signOutFunction ?? () {}, signOutTextStyle: signOutTextStyle, icon: signOutIcon) else const SizedBox.shrink(),
+            if (withSignOutOption)
+              buildSignOutOption(
+                  context: context,
+                  signOutFunction: signOutFunction ?? () {},
+                  signOutTextStyle: signOutTextStyle,
+                  icon: signOutIcon)
+            else
+              const SizedBox.shrink(),
           ],
         ),
       ),

@@ -71,7 +71,8 @@ class _SearchTextFieldState extends State<NxSearchTextField> {
         hintText: widget.hintText ?? 'Search',
         hintStyle: widget.hintStyle,
         elevation: widget.elevation ?? const WidgetStatePropertyAll<double>(0),
-        padding: const WidgetStatePropertyAll<EdgeInsets>(EdgeInsets.symmetric(horizontal: 16)),
+        padding: const WidgetStatePropertyAll<EdgeInsets>(
+            EdgeInsets.symmetric(horizontal: 16)),
         onTap: widget.onTap,
         onSubmitted: widget.onSubmitted,
         onChanged: widget.onChanged,

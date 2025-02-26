@@ -4,7 +4,8 @@ import 'package:nx_ui/models/destination.dart';
 
 class NxCustomNavigationDrawer extends StatelessWidget {
   const NxCustomNavigationDrawer({
-    required this.destinations, super.key,
+    required this.destinations,
+    super.key,
     this.onDestinationSelected,
     this.selectedIndex,
     this.signOutDestination,

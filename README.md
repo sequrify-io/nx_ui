@@ -1,26 +1,50 @@
 # nx_ui
 
-This package provides ui widgets.
+A Flutter package providing a collection of customizable widgets for building modern user interfaces. Features include drawers, cards, buttons, search fields, and various utility widgets with flexible styling options.
+
+## Table of Contents
+- [Features](#features)
+- [Requirements](#requirements)
+- [Getting Started](#getting-started)
+- [Widgets](#widgets)
+  - [nx_drawer](#nx_drawer)
+  - [nx_navigation_drawer](#nx_navigation_drawer)
+  - [nx_background_card](#nx_background_card)
+  - [nx_background_layer](#nx_background_layer)
+  - [nx_empty_screen](#nx_empty_screen)
+  - [nx_search_text_field](#nx_search_text_field)
+  - [nx_coming_soon_widget](#nx_coming_soon_widget)
+  - [nx_expandable_text](#nx_expandable_text)
+  - [nx_primary_button](#nx_primary_button)
+  - [nx_secondary_button](#nx_secondary_button)
+  - [nx_shimmer_box](#nx_shimmer_box)
+  - [nx_snackbar](#nx_snackbar)
+  - [nx_photo_card](#nx_photo_card)
 
 ## Features
 
 UI widgets provided in package:
 
-- nx_drawer
-- nx_navigation_drawer
-- nx_background_card
-- nx_background_layer
-- nx_empty_screen
-- nx_search_text_field
-- nx_coming_soon_widget
-- nx_expandable_text
-- nx_primary_button
-- nx_secondary_button
-- nx_shimmer_box
-- nx_snackbar
-- nx_photo_card
+- nx_drawer - Customizable drawer with navigation and sign-out support
+- nx_navigation_drawer - Material 3 style navigation drawer with destination support
+- nx_background_card - Card widget that sizes relative to screen dimensions
+- nx_background_layer - Container for background images or colors
+- nx_empty_screen - Empty state widget with icon and message
+- nx_search_text_field - Material 3 search field with state-based styling
+- nx_coming_soon_widget - Placeholder for upcoming features
+- nx_expandable_text - Text widget that expands into a dialog
+- nx_primary_button - Filled button using FilledButton
+- nx_secondary_button - Outlined button using OutlinedButton
+- nx_shimmer_box - Loading placeholder with shimmer animation
+- nx_snackbar - Snackbar with predefined styles (error, success, warning)
+- nx_photo_card - Card for displaying images with fallback
 
-## Getting started
+## Requirements
+
+- Dart SDK: >=3.0.1 <4.0.0
+- Flutter SDK: >=1.17.0
+
+## Getting Started
 
 Add the package to pubspec:
 
@@ -28,586 +52,589 @@ Add the package to pubspec:
 nx_ui:
   git:
     url: https://github.com/sequrify-io/nx_ui.git
-    ref: v0.0.18
+    ref: v0.0.19
 ```
 
-## Usage and description of widgets
+## Widgets
 
 ### nx_drawer
 
-<img src="images/new/drawer.png" alt="drawer" width="200"/>
+A customizable drawer with support for navigation options and an optional sign-out button.
+Uses Flutter's standard [Drawer] widget with enhanced functionality.
 
 Example usage:
 
 ```dart
-import 'package:nx_ui/widgets/nxCustomDrawer.dart';
+import 'package:nx_ui/widgets/nx_drawer.dart';
+import 'package:flutter/material.dart';
 
-...
-  drawer: NxCustomDrawer(
-            sequrifyButton: SequrifyButton(
-              onPressed: () {},
-            ),
-            drawerOptions: {
-              [
-                'Profile',
-                SvgPicture.asset('assets/icons/profile_icon.svg'),
-              ]: () => {
-                    context.goNamed(
-                      'home',
-                      pathParameters: {
-                        'tab': '0',
-                      },
-                    ),
-                  },
-              [
-                'Notification',
-                SvgPicture.asset('assets/icons/notifications_icon.svg'),
-              ]: () => {
-                    context.goNamed(
-                      'home',
-                      pathParameters: {
-                        'tab': '1',
-                      },
-                    ),
-                  },
-              [
-                'Settings',
-                SvgPicture.asset('assets/icons/settings_icon.svg'),
-              ]: () => {
-                    context.goNamed(
-                      'home',
-                      pathParameters: {
-                        'tab': '2',
-                      },
-                    ),
-                  },
-            },
-          ),
+Drawer(
+  child: NxCustomDrawer(
+    drawerOptions: {
+      [
+        'Profile',
+        Icon(Icons.person_outline),  // Icon is optional
+      ]: () {
+        // Handle profile navigation
+      },
+      [
+        'Settings',
+        Icon(Icons.settings_outline),
+      ]: () {
+        // Handle settings navigation
+      },
+    },
+    // Optional: Custom sign out handling
+    withSignOutOption: true,
+    signOutFunction: () {
+      // Handle sign out
+    },
+    // Optional: Custom styling
+    backgroundColor: Colors.white,
+    optionTextStyle: TextStyle(fontSize: 16),
+  ),
+)
 ```
 
-You have to provide one required parameter:
-final Map<List<dynamic>, Function() drawerOptions
-As keys you provide a list where first element is a name of drawer option, and second element is an optional icon that appears next to the name.
-As values you need to provide a Function
+#### Parameters
 
-Additionally you can provide parameters:
+Required:
+- `drawerOptions`: Map<List<dynamic>, Function()> - Navigation options where:
+  - Key is a list containing:
+    - First element (String): The option text
+    - Second element (optional Widget): Icon to display next to the text
+  - Value is a callback function executed when the option is tapped
 
-final EdgeInsets? padding;
-final DrawerHeader? drawerHeader;
-final TextStyle? optionTextStyle;
-final bool withSignOutOption - default true.
-final Function? signOutFunction - function invoked after clicking sign out.
-final TextStyle? signOutTextStyle;
-final Widget? signOutIcon;
-final Widget? sequrifyButton;
+Optional:
+- `padding`: EdgeInsets? - Drawer content padding (default: EdgeInsets.all(22))
+- `drawerHeader`: DrawerHeader? - Custom header (default: "Menu" text in headlineMedium style)
+- `optionTextStyle`: TextStyle? - Text style for navigation options
+- `withSignOutOption`: bool - Show sign out option (default: true)
+- `signOutFunction`: Function()? - Callback when sign out is tapped
+- `signOutTextStyle`: TextStyle? - Text style for sign out option
+- `signOutIcon`: Widget? - Custom sign out icon (default: package's logout_icon.svg)
+- `sequrifyButton`: Widget? - Optional widget shown at bottom of drawer
+- `backgroundColor`: Color? - Drawer background color
+- `drawerWidth`: double? - Drawer width
+- `elevation`: double? - Drawer elevation
+
+#### Default Behavior
+- Shows a header with "Menu" text in headlineMedium style
+- Includes a sign out option at the bottom (unless disabled)
+- Automatically closes when any option is selected
+- Icons in navigation options are optional
+- Uses package's logout_icon.svg for sign out by default
 
 ### nx_navigation_drawer
 
-Another proposition of drawer, this time NavigationDrawer from Material3.
+Modern navigation drawer with support for destinations and sign-out functionality.
 
-<img src="images/new/navigation_drawer.png" alt="drawer" width="200"/>
+![Navigation drawer example](images/new/navigation_drawer.png)
 
 Example usage:
 
 ```dart
+import 'package:nx_ui/widgets/nx_navigation_drawer.dart';
+import 'package:nx_ui/models/destination.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-    const drawerDestinations = <Destination>[
-      Destination('Profile', Icon(Icons.person_2_outlined), Icon(Icons.person_2)),
-      Destination('Notifications', Icon(Icons.notifications_outlined), Icon(Icons.notifications)),
-      Destination('Settings', Icon(Icons.settings_outlined), Icon(Icons.settings)),
-    ];
+const drawerDestinations = <Destination>[
+  Destination('Profile', Icon(Icons.person_2_outlined), Icon(Icons.person_2)),
+  Destination('Notifications', Icon(Icons.notifications_outlined), Icon(Icons.notifications)),
+  Destination('Settings', Icon(Icons.settings_outlined), Icon(Icons.settings)),
+];
 
-...
- NxCustomNavigationDrawer(
-            sequrifyButton: SequrifyButton(
-              onPressed: () {},
-            ),
-            destinations: drawerDestinations,
-            signOutDestination: Destination(
-              'Sign out',
-              SvgPicture.asset(
-                'assets/logout_icon.svg',
-                package: 'nx_ui',
-              ),
-              SvgPicture.asset(
-                'assets/logout_icon.svg',
-                package: 'nx_ui',
-              ),
-            ),
-            onDestinationSelected: (int index) {
-              context.goNamed(
-                'home',
-                pathParameters: {
-                  'tab': '$index',
-                },
-              );
-            },
-            selectedIndex: currentTab,
-          ),
-
+NxCustomNavigationDrawer(
+  sequrifyButton: TextButton(
+    onPressed: () {},
+    child: const Text('Custom Action'),
+  ),
+  destinations: drawerDestinations,
+  signOutDestination: Destination(
+    'Sign out',
+    SvgPicture.asset(
+      'assets/logout_icon.svg',
+      package: 'nx_ui',
+    ),
+    SvgPicture.asset(
+      'assets/logout_icon.svg',
+      package: 'nx_ui',
+    ),
+  ),
+  onDestinationSelected: (int index) {
+    context.goNamed(
+      'home',
+      pathParameters: {
+        'tab': '$index',
+      },
+    );
+  },
+  selectedIndex: currentTab,
+),
 ```
 
-You have to provide one required parameter:
-List<Destination> destinations - list of Destination model objects, that are displayed in drawer.
+#### Parameters
 
-Destination model also comes with nx_ui package:
+Required:
+- `destinations`: List<Destination> - List of Destination objects to display in drawer
 
-```dart
-class Destination {
-  const Destination(
-    this.label,
-    this.icon,
-    this.selectedIcon,
-  );
-
-  final String label;
-  final Widget icon;
-  final Widget selectedIcon;
-}
-
-```
-
-It has label, icon and selectedIcon attributes.
-
-Additionaly NxCustomNavigationDrawer takes parameters:
-
-final Function(int)? onDestinationSelected;
-final int? selectedIndex;
-final List<Destination> destinations;
-final Destination? signOutDestination;
-final TextStyle? headerTextStyle;
-final TextStyle? optionTextStyle;
-final Widget? sequrifyButton;
-final Color? backgroundColor;
-final double? elevation;
-final Color? shadowColor;
-final Color? surfaceTintColor;
-final Color? indicatorColor;
-final ShapeBorder? indicatorShape;
+Optional:
+- `onDestinationSelected`: Function(int)? - Callback when destination is selected
+- `selectedIndex`: int? - Currently selected destination index
+- `signOutDestination`: Destination? - Sign out destination configuration
+- `headerTextStyle`: TextStyle? - Text style for header
+- `optionTextStyle`: TextStyle? - Text style for options
+- `sequrifyButton`: Widget? - Custom button widget
+- `backgroundColor`: Color? - Background color of drawer
+- `elevation`: double? - Drawer elevation
+- `shadowColor`: Color? - Shadow color
+- `surfaceTintColor`: Color? - Surface tint color
+- `indicatorColor`: Color? - Selected item indicator color
+- `indicatorShape`: ShapeBorder? - Shape of the selection indicator
 
 ### nx_background_card
 
 Resizable background card widget, adjustable to the screen. It goes well with Stack widget.
 
-<p>
-<img src="images/new/background_card.png" alt="home_with_background_image" width="200"/>
-</p>
+![Background card example](images/new/background_card.png)
 
 Example usage:
 
 ```dart
-...
-...
-child: Stack(
+Stack(
+  children: [
+    NxBackgroundLayer(
+      backgroundColor: Colors.black.withOpacity(0.3),
+    ),
+    Positioned(
+      bottom: 0,
+      child: NxBackgroundCard(
+        height: 0.5,
+        elevation: 20,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            NxBackgroundLayer(
-              backgroundColor: Colors.black.withOpacity(0.3),
+            NxEmptyScreen(
+              height: 350,
+              context: context,
+              information: const Text('No elements'),
+              color: Colors.white,
             ),
-            Positioned(
-              bottom: 0,
-              child: NxBackgroundCard(
-                height: 0.5,
-                elevation: 20,
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    NxEmptyScreen(
-                      height: 350,
-                      context: context,
-                      information: const Text('No elements'),
-                      color: Colors.white,
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Spacer(),
-                        NxSecondaryButton(
-                          text: "Cancel",
-                          onPressed: () {},
-                          buttonWidth: 155,
-                          buttonHeight: 50,
-                        ),
-                        const Spacer(),
-                        NxPrimaryButton(
-                          text: "Add",
-                          onPressed: () {},
-                          buttonWidth: 155,
-                          buttonHeight: 50,
-                        ),
-                        const Spacer(),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-...
-```
-
-NxBackgroundCard takes 8 parameters:
-
-- final Widget child
-- final double? height
-- final double? width
-- final Color? backgroundColor
-- final EdgeInsetsGeometry? margin;
-- final double? elevation;
-- final ShapeBorder? shape;
-- final bool isScrollable;
-
-### nx_background_layer
-
-Container widget that works as a background image.
-
-<p>
-<img src="images/new/background_card.png" alt="nx_background_layer" width="200"/>
-<img src="images/new/drawer.png" alt="drawer" width="200"/>
-</p>
-
-Example usage:
-
-```dart
-...
-drawer: Stack(
-        children: [
-          GestureDetector(
-            onTap: () => context.pop(),
-            child: Stack(
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                NxBackgroundLayer(
-                  backgroundColor: Colors.black.withOpacity(0.2),
+                const Spacer(),
+                NxSecondaryButton(
+                  text: "Cancel",
+                  onPressed: () {},
+                  buttonWidth: 155,
+                  buttonHeight: 50,
                 ),
+                const Spacer(),
+                NxPrimaryButton(
+                  text: "Add",
+                  onPressed: () {},
+                  buttonWidth: 155,
+                  buttonHeight: 50,
+                ),
+                const Spacer(),
               ],
             ),
-          ),
-          NxCustomDrawer(
-            ...)
-            ...
-        ]
-)
-...
-```
-
-It takes 5 parameters:
-final bool fromAssets - by default true. If set to false, then network.image will be used.
-final String imagePath - path to the image
-final double imageShift - distance from the bottom of the stack
-final double imageOpacity - image opacity
-final Color? backgroundColor - background color in case when not using image
-
-### nx_empty_screen
-
-Empty customizable widget that can be used e.g. when there's no elements returned in list or grid view.
-
-<p>
-<img src="images/new/background_card.png" alt="empty" width="200"/>
-</p>
-
-Example usage:
-
-```dart
-...
-NxBackgroundCard(
-                  context: context,
-                  height: 0.76,
-                  child: nxEmptyScreen(
-                    context,
-                    const Text('No elements'),
-                    Colors.white,
-                  ),
-                ),
-```
-
-It takes 5 parameters:
-
-- Text information - text displayed inside container
-- Color color - color of the container
-- IconData? icon - icon displayed inside container
-- double? height - height of the container
-- double? width - width of the container
-
-### nx_search_text_field
-
-Search field widget.
-
-<p>
-<img src="images/new/active_search.png" alt="searchField" width="200"/>
-</p>
-
-Example usage:
-
-```dart
-...
- Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                      child: NxSearchTextField(
-                        onChanged: (value) {
-                          searchString = value.toLowerCase();
-                        },
-                      ),
-                    ),
-```
-
-It takes parameters:
-
-final Function(String)? onChanged - function invoked after text field changes
-final bool readOnly - indicator if the field is read only or not
-final String? searchText - String displayed inside field
-final Color? cursorColor - cursor color
-final Color? fillColor - text field color
-final TextStyle? labelStyle - text field text style
-final TextStyle? hintStyle - text field hint text style
-final Widget? suffixIcon - custom icon widget
-final TextEditingController? controller;
-final FocusNode? focusNode;
-final double? width;
-final double? height;
-
-### nx_coming_soon_widget
-
-This widget can be used as a preview of some features.
-
-Example usage:
-
-```dart
-...
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return const Scaffold(
-      body: nxComingSoonPanel(text: 'More info available soon', comingSoonTitle: 'Coming soon'),
-    );
-  }
-
-```
-
-<img src="images/nxComingSoon.png" alt="nxComingSoon" width="200"/>
-
-You have to provide two required parameters:
-
-- required String text - lower text visible on screen
-- required String comingSoonTitle - upper text visible on screen
-
-The other parameters you can provide are:
-
-- SvgPicture? svg - svg visible above title text
-- TextStyle? textStyleTitle - text style of title text
-- TextStyle? textStyleBody - text style of lower text
-
-### nx_expandable_text
-
-This widget can be used when you have a long text and you want to have an option to show dialog to display whole text on scrollable.
-Example usage:
-
-```dart
-...
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return const Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 100,
-            ),
-            nxExpandableText(text: 'hellesdfdsfdsfsdffdsdddddddjvfjfdvhfbdjdnfvcdskvjidusbvhdskfncjbdfvdnvkdsmcksdmckdmscjdnvsdvnidsjvdsmkbkmcksmdcjdsbfcdkcmdsjustynadn dsjnfsocmskdfo', buttonText: 'Read more')
           ],
         ),
       ),
-    );
-  }
-
+    ),
+  ],
+)
 ```
 
-<img src="images/new/expandable_text.png" alt="nx_expandable_text" width="200"/>
+#### Parameters
 
-You have to provide to widget two required parameters:
+Required:
+- `child`: Widget - The content of the card
 
-- required String text - text visible on screen
-- required String buttonText - text that invokes dialog after tapping
+Optional:
+- `height`: double? - Height of the card as a fraction of screen height
+- `width`: double? - Width of the card as a fraction of screen width
+- `backgroundColor`: Color? - Background color of the card
+- `margin`: EdgeInsetsGeometry? - Margin around the card
+- `elevation`: double? - Card elevation
+- `shape`: ShapeBorder? - Shape of the card
+- `isScrollable`: bool - Whether the content is scrollable (default: false)
 
-The other parameters you can provide are:
+### nx_background_layer
 
-- Image? icon - your own icon used for closing the dialog that would replace the default icon
-- TextStyle? dialogTextStyle - text style inside dialog
-- TextStyle? textStyle - text style of text on screen
-- TextStyle? buttonTextStyle - text style of button text on screen
-- Color? backgroundColor - background color of dialog
-- int maxLines - by default it is set to 1, number of lines that can be visible on screen
+Container widget that works as a background image or color layer.
 
-### nx_primary_button
-
-This widget can be used as a button.
-Example usage:
-
-```dart
-...
- child: NxPrimaryButton(
-                        buttonWidth: MediaQuery.of(context).size.width * 0.8,
-                        onPressed: () {
-                          NxCustomSnackBar.showErrorSnackBar(context: context, message: 'Error');
-                        },
-                        text: 'Invoke snackbar',
-                      ),
-
-```
-
-<img src="images/new/home.png" alt="nxPrimaryButton" width="200"/>
-
-You have to provide two required parameters:
-
-- required void Function() onPressed - function that will be invoked after clicking the button
-- required String text - text displayed on button
-
-The other parameters you can provide are:
-
-final EdgeInsetsGeometry? margin;
-final Color? buttonColor;
-final TextStyle? buttonTextStyle;
-final double? buttonWidth;
-final double? buttonHeight;
-final double? buttonElevation;
-final double? borderRadius;
-
-### nx_secondary_button
+![Background layer examples](images/new/background_card.png)
+![Background layer with drawer](images/new/drawer.png)
 
 Example usage:
 
 ```dart
-...
- child: NxSecondaryButton(
-                        buttonWidth: MediaQuery.of(context).size.width * 0.8,
-                        onPressed: () async {
-                          final notification = NotificationEntry(
-                            id: '2',
-                            createdAt: DateFormat('dd/MM/yyyy').format(DateTime.now()),
-                            title: 'New data from New York',
-                            description: 'TNew York, often referred to as the "Big Apple," is one of the most iconic cities in the world. Located on the northeastern coast of the United States, it is a bustling metropolis known for its diverse culture, towering skyscrapers, and vibrant atmosphere.',
-                            readNotification: false,
-                          );
-                          notificationList.add(notification);
-                          ref.read(notificationsProvider.notifier).update((_) => true);
-                          ref.read(notificationListProvider.notifier).update((_) => notificationList);
-                          await NotificationService.showNotification(
-                            title: 'New data from New York',
-                            body: 'TNew York, often referred to as the "Big Apple," is one of the most iconic cities in the world. Located on the northeastern coast of the United States, it is a bustling metropolis known for its diverse culture, towering skyscrapers, and vibrant atmosphere.',
-                            payload: 'New data from New York',
-                          );
-                        },
-                        text: 'Add notification',
-                      ),
-
+Stack(
+  children: [
+    GestureDetector(
+      onTap: () => context.pop(),
+      child: Stack(
+        children: [
+          NxBackgroundLayer(
+            backgroundColor: Colors.black.withOpacity(0.2),
+          ),
+        ],
+      ),
+    ),
+    NxCustomDrawer(...)
+  ]
+)
 ```
 
-<img src="images/new/home.png" alt="nxSecondaryButton" width="200"/>
+#### Parameters
 
-You have to provide to widget two required parameters:
+Optional:
+- `fromAssets`: bool - Whether to load image from assets (default: true)
+- `imagePath`: String? - Path to the image
+- `imageShift`: double - Distance from the bottom of the stack (default: 0.0)
+- `imageOpacity`: double - Image opacity (default: 1.0)
+- `backgroundColor`: Color? - Background color when not using image
 
-- required void Function() onPressed - function that will be invoked after clicking the button
-- required String text - text displayed on button
+### nx_empty_screen
 
-The other parameters you can provide are:
+Empty customizable widget that can be used when there's no content to display.
 
-final EdgeInsetsGeometry? margin;
-final Color? buttonColor;
-final TextStyle? buttonTextStyle;
-final double? buttonWidth;
-final double? buttonHeight;
-final ButtonStyle? buttonStyle;
-final double? borderRadius;
+![Empty screen example](images/new/background_card.png)
+
+Example usage:
+
+```dart
+NxEmptyScreen(
+  context: context,
+  information: const Text('No elements'),
+  color: Colors.white,
+  height: 350,
+)
+```
+
+#### Parameters
+
+Required:
+- `context`: BuildContext - Build context
+- `information`: Text - Text displayed inside container
+
+Optional:
+- `color`: Color? - Color of the container
+- `icon`: IconData? - Icon displayed inside container (default: Ionicons.sad_outline)
+- `height`: double? - Height of the container
+- `width`: double? - Width of the container
+
+### nx_search_text_field
+
+A Material 3 search field with support for different visual states and custom styling.
+
+![Search field example](images/new/active_search.png)
+
+Example usage:
+
+```dart
+import 'package:nx_ui/widgets/nx_search_text_field.dart';
+import 'package:flutter/material.dart';
+
+NxSearchTextField(
+  onChanged: (value) {
+    // Handle search text changes
+  },
+  onSubmitted: (value) {
+    // Handle search submission
+  },
+  hintText: 'Search items...',
+  fillColor: const WidgetStatePropertyAll<Color>(Colors.grey),
+  trailing: [
+    IconButton(
+      icon: Icon(Icons.clear),
+      onPressed: () {
+        // Clear search
+      },
+    ),
+  ],
+)
+```
+
+#### Parameters
+
+Optional:
+- `onChanged`: Function(String)? - Called when search text changes
+- `onSubmitted`: Function(String)? - Called when search is submitted
+- `onTap`: Function()? - Called when field is tapped
+- `fillColor`: WidgetStateProperty<Color?>? - Background color for different states
+- `textStyle`: WidgetStateProperty<TextStyle?>? - Text style for different states
+- `hintStyle`: WidgetStateProperty<TextStyle?>? - Hint text style for different states
+- `hintText`: String? - Placeholder text (default: "Search")
+- `controller`: TextEditingController? - For controlling the text input
+- `focusNode`: FocusNode? - For controlling focus
+- `width`: double? - Field width
+- `height`: double? - Field height
+- `elevation`: WidgetStatePropertyAll<double>? - Elevation for different states
+- `trailing`: Iterable<Widget>? - Widgets to show after the search icon
+- `side`: WidgetStateProperty<BorderSide?>? - Border style for different states
+- `shape`: WidgetStateProperty<OutlinedBorder?>? - Field shape for different states
+
+### nx_coming_soon_widget
+
+Widget for displaying a "coming soon" message with optional icon. Also provides a panel version (`NxComingSoonPanel`) that wraps the widget in a full-screen scaffold.
+
+![Coming soon widget](images/nxComingSoon.png)
+
+Example usage:
+
+```dart
+// Basic widget
+NxComingSoonWidget(
+  text: 'More info available soon',
+  comingSoonTitle: 'Coming soon',
+)
+
+// Full screen panel
+NxComingSoonPanel(
+  text: 'More info available soon',
+  comingSoonTitle: 'Coming soon',
+)
+```
+
+#### Parameters
+
+Required:
+- `text`: String - Lower text visible on screen
+- `comingSoonTitle`: String - Upper text visible on screen
+
+Optional:
+- `svg`: SvgPicture? - SVG image displayed above title
+- `textStyleTitle`: TextStyle? - Text style for title
+- `textStyleBody`: TextStyle? - Text style for description
+
+### nx_expandable_text
+
+Widget for displaying truncated text with an option to expand it in a dialog.
+
+![Expandable text example](images/new/expandable_text.png)
+
+Example usage:
+
+```dart
+NxExpandableText(
+  text: 'This is a long text that will be truncated...',
+  buttonText: 'Read more',
+  maxLines: 2,
+)
+```
+
+#### Parameters
+
+Required:
+- `text`: String - Text to display
+- `buttonText`: String - Text for the expand button
+
+Optional:
+- `maxLines`: int - Number of lines to show before truncating (default: 1)
+- `icon`: Image? - Custom icon for closing the dialog
+- `dialogTextStyle`: TextStyle? - Text style for dialog content
+- `textStyle`: TextStyle? - Text style for main text
+- `buttonTextStyle`: TextStyle? - Text style for button
+- `backgroundColor`: Color? - Background color of dialog
+
+### nx_primary_button and nx_secondary_button
+
+Customizable filled and outlined buttons with flexible styling options.
+
+![Primary button example](images/new/home.png)
+
+Example usage:
+
+```dart
+NxPrimaryButton(
+  text: "Submit",
+  onPressed: () {
+    // Handle button press
+  },
+  buttonWidth: 155,
+  buttonHeight: 50,
+)
+
+NxSecondaryButton(
+  text: "Cancel",
+  onPressed: () {
+    // Handle button press
+  },
+  buttonWidth: 155,
+  buttonHeight: 50,
+)
+```
+
+#### Parameters
+
+Required:
+- `text`: String - Button text
+- `onPressed`: VoidCallback - Function to call when button is pressed
+
+Optional:
+- `margin`: EdgeInsetsGeometry? - Button margin
+- `buttonTextStyle`: TextStyle? - Text style for button text
+- `buttonWidth`: double? - Width of button
+- `buttonHeight`: double? - Height of button
+- `buttonStyle`: ButtonStyle? - Custom button style
 
 ### nx_shimmer_box
 
-This widget provides a shimmer animation, it can be displayed during loading.
+A loading placeholder widget with shimmer animation effect.
 
 Example usage:
 
 ```dart
-...
- @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return const Scaffold(body: nxShimmerBox());
-  }
+import 'package:nx_ui/widgets/nx_shimmer_box.dart';
+import 'package:flutter/material.dart';
 
+// Basic shimmer box with default size
+NxShimmerBox()
+
+// Custom sized shimmer box with specific color and opacity
+NxShimmerBox(
+  width: 200,
+  height: 100,
+  opacity: 0.8,
+  color: Colors.grey[300],
+)
+
+// Loading card with shimmer effect
+Card(
+  child: Padding(
+    padding: EdgeInsets.all(16),
+    child: Column(
+      children: [
+        NxShimmerBox(
+          height: 24,
+          width: double.infinity,
+        ),
+        SizedBox(height: 8),
+        NxShimmerBox(
+          height: 100,
+          width: double.infinity,
+        ),
+      ],
+    ),
+  ),
+)
 ```
 
-<img src="images/nxShimmerBox.png" alt="nxShimmerBox" width="200"/>
+#### Parameters
 
-Parameters you can provide are:
-
-- double width - width of container with shimmer, by default infinity
-- double height - height of container with shimmer, by default infinity
-- double opacity - opacity of shimmer, by default 1
-- Color? color - color of shimmer
+Optional:
+- `width`: double - Width of the shimmer box (default: double.infinity)
+- `height`: double - Height of the shimmer box (default: double.infinity)
+- `opacity`: double - Opacity of the shimmer effect (default: 1)
+- `color`: Color? - Background color of the box
 
 ### nx_snackbar
 
-This widget provides a custom snackbar.
+A utility class providing snackbar notifications with predefined styles.
 
-<p>
-<img src="images/new/snackbar.png" alt="error" width="200" />
-<img src="images/new/snackbar_success.png" alt="error" width="200" />
-<img src="images/new/snackbar_warning.png" alt="error" width="200" />
-</p>
-
-There are three types of snackbar defined:
-
-- success
-- error
-- warning
-
-You can use showSuccessSnackBar, showErrorSnackBar, and showWarningSnackbar.
-
-Here is example usage:
-
-```dart
-...
- nxPrimaryButton(
-                      imageColor: Colors.black,
-                      onPressed: () {
-                        NxCustomSnackBar.showErrorSnackBar(context: context, message: 'Error');
-                      },
-                      labelText: 'Invoke snackbar',
-                    ),
-
-```
-
-You can also customize it to your own type using showCustomSnackBar function.
-
-For parameters you provide:
-
-required BuildContext context - context
-required String message - snackbar message
-required Color color - snackbar color
-IconData? icon - icon on snackbar
-int seconds - how long snackbar displays
-
-### nx_photo_card
-
-Card widget that can be used to display e.g.images, in gridView, etc.
+![Snackbar examples](images/new/snackbar.png)
 
 Example usage:
 
 ```dart
-...
-const NxPhotoCard(
-                      imagePath: 'assets/images/new_york.png',
-                    ),
+// Show an error snackbar
+NxCustomSnackBar.showErrorSnackBar(
+  context: context,
+  message: 'An error occurred'
+);
+
+// Show a success snackbar
+NxCustomSnackBar.showSuccessSnackBar(
+  context: context,
+  message: 'Operation completed successfully'
+);
+
+// Show a warning snackbar
+NxCustomSnackBar.showWarningSnackBar(
+  context: context,
+  message: 'Please review your input'
+);
+
+// Show a custom snackbar
+NxCustomSnackBar.showCustomSnackBar(
+  context: context,
+  message: 'Custom message',
+  color: Colors.purple,
+  icon: Icons.star,
+  seconds: 5,
+  snackBarBehavior: SnackBarBehavior.fixed,
+);
 ```
 
-It takes parameters:
+#### Methods
 
-final String? imagePath;
-final double? elevation;
-final Widget? child;
-final double? height;
-final double? width;
+- `showErrorSnackBar`: Shows a red snackbar with an error icon
+- `showSuccessSnackBar`: Shows a green snackbar with a checkmark icon
+- `showWarningSnackBar`: Shows an orange snackbar with a warning icon
+- `showCustomSnackBar`: Shows a customizable snackbar
 
-## Bugs & features
+#### Parameters for showCustomSnackBar
 
-If you found bug or need a feature add issue on Github or make a PR.
+Required:
+- `context`: BuildContext - The build context
+- `message`: String - The text to display
+- `color`: Color - Background color of the snackbar
+
+Optional:
+- `icon`: IconData? - Optional icon to show before the message
+- `seconds`: int - Duration in seconds (default: 2)
+- `snackBarBehavior`: SnackBarBehavior - Whether the snackbar floats or is fixed (default: floating)
+
+### nx_photo_card
+
+A card widget for displaying images with fallback placeholder.
+
+Example usage:
+
+```dart
+import 'package:nx_ui/widgets/nx_photo_card.dart';
+import 'package:flutter/material.dart';
+
+// Basic photo card with asset image
+NxPhotoCard(
+  imagePath: 'assets/images/photo.jpg',
+  height: 200,
+  width: double.infinity,
+  elevation: 4,
+)
+
+// Photo card with custom child widget
+NxPhotoCard(
+  height: 200,
+  width: double.infinity,
+  elevation: 2,
+  child: Image.network(
+    'https://example.com/image.jpg',
+    fit: BoxFit.cover,
+  ),
+)
+
+// Photo card without image (shows placeholder)
+NxPhotoCard(
+  height: 150,
+  width: 200,
+  elevation: 1,
+)
+```
+
+#### Parameters
+
+Optional:
+- `imagePath`: String? - Path to the asset image
+- `elevation`: double? - Card elevation (default: 0)
+- `child`: Widget? - Custom widget to display instead of image
+- `height`: double? - Card height (default: 200)
+- `width`: double? - Card width (default: double.infinity)

@@ -3,7 +3,9 @@ import 'package:ionicons/ionicons.dart';
 
 class NxEmptyScreen extends StatelessWidget {
   const NxEmptyScreen({
-    required this.context, required this.information, super.key,
+    required this.context,
+    required this.information,
+    super.key,
     this.color,
     this.icon = Ionicons.sad_outline,
     this.height,
